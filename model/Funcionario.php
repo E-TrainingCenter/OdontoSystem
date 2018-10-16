@@ -66,17 +66,18 @@ class Funcionario {
 		return $this->senha;
 	}
 
-	public function add($nome, $cpf, $endereco, $id_cargo, $sexo) {
+	public function add($nome, $cpf, $endereco, $id_cargo, $sexo, $senha) {
 
 		$conn = Banco::connect();
 
-		$stmt = $conn->prepare("INSERT INTO Funcionario (nome, cpf, endereco, id_cargo, sexo) VALUES (:nome, :cpf, :endereco, :id_cargo, :sexo)");
+		$stmt = $conn->prepare("INSERT INTO Funcionario (nome, cpf, endereco, id_cargo, sexo, senha) VALUES (:nome, :cpf, :endereco, :id_cargo, :sexo, :senha)");
 
 		$stmt->bindParam(":nome", $nome); 
 		$stmt->bindParam(":cpf", $cpf);
 		$stmt->bindParam(":endereco", $endereco);
 		$stmt->bindParam(":id_cargo", $id_cargo);
 		$stmt->bindParam(":sexo", $sexo);
+		$stmt->bindParam(":senha", $senha);
 
 		$stmt->execute();
 
