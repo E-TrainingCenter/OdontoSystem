@@ -17,7 +17,6 @@ class FuncionarioController {
 
 			header("Location: /OdontoSystem/view/Home.php");
 	
-
 	}
 
 	public function CadastrarFuncionario($nome, $cpf, $endereco, $id_cargo, $sexo, $senha){
