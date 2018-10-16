@@ -96,10 +96,17 @@ class Mensagem {
 
 	}
 
-	public function EnviaMensagem() {
+	public function EnviaMensagem($mensagem, $data, $id_funcionario_remetente, $id_funcionario_destinatario, $excluido, $assunto, $visualizado) {
 		$conn = Banco::connect();
 
 		$stmt = $conn->prepare("INSERT INTO Mensagem (mensagem, data, id_funcionario_remetente, id_funcionario_destinatario, excluido, assunto, visualizado) VALUES (:mensagem, :data, :id_funcionario_remetente, :id_funcionario_destinatario, :excluido, :assunto, :visualizado)");
+
+		$stmt->bindParam(":mensagem", $mensagem);
+		$stmt->bindParam(":id_funcionario_remetente", $id_funcionario_remetente);
+		$stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
+		$stmt->bindParam(":excluido", $excluido);
+		$stmt->bindParam(":assunto", $assunto);
+		$stmt->bindParam(":visualizado", $visualizado);
 
 		if ($stmt->execute()) {
 
