@@ -85,7 +85,7 @@ class Tarefa {
     public function listAll() {
         $conn = Banco::connect();
 
-        $stmt = $connt->prepare("SELECT * FROM Tarefa");
+        $stmt = $connt->prepare("SELECT * FROM Tarefa WHERE excluido = 0");
 
         $stmt->execute();
 
@@ -106,6 +106,22 @@ class Tarefa {
             return false;
         }
     }
+
+
+    public function listExcluidos() {
+
+        $conn = Banco::connect();
+
+        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 1");
+
+        $stmt->execute();
+        
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+
+    }
+
 
 
 }

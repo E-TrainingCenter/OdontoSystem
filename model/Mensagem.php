@@ -86,7 +86,7 @@ class Mensagem {
 
 		$conn = Banco::connect();
 
-		$stmt = $connt->prepare("SELECT * FROM Mensagem");
+		$stmt = $connt->prepare("SELECT * FROM Mensagem WHERE excluido = 0");
 
 		$stmt->execute();
 
@@ -108,6 +108,33 @@ class Mensagem {
 		else {
 			return false;
 		}
+
+	}
+
+	public function excluir($id_mensagem) {
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("UPDATE Mensagem SET excluido = 1 WHERE id_mensagem = :id_mensagem");
+
+		$stmt->bindParam(":id_mensagem", $id_mensagem);
+
+		if ($stmt->execute())
+			return true;
+		else
+			return false;
+	}
+
+	public function listExcluidos() {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE excluido = 1");
+
+		$stmt->execute();
+		
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $results;
 
 	}
 
