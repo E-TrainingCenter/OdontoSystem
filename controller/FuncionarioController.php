@@ -7,17 +7,21 @@ class FuncionarioController {
 
 	public function login($nome, $senha) {
 		
-		if ($_POST['nome'])
+		if (isset($_POST['nome']) and isset($_POST['senha'])) {
 
-		$funcionario = new Funcionario();
+			$nome = $_POST['nome'];
+			$senha = $_POST['senha'];
 
-		$funcionario->login($nome, $senha);
+			$funcionario = new Funcionario();
 
-		session_start();
+			$funcionario->login($nome, $senha);
 
-		$_SESSION['nome'] = $nome;
+			session_start();
 
-		header("Location: ../view/Home.php");
+			$_SESSION['nome'] = $nome;
+
+			header("Location: ../view/Home.php");
+	}
 
 	}
 
