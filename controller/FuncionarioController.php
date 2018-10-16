@@ -19,6 +19,12 @@ class FuncionarioController {
 	
 	}
 
+	public function CadastrarFuncionario($nome, $cpf, $endereco, $id_cargo, $sexo, $senha){
+		$funcionario = new Funcionario();
+		$funcionario->add($nome, $cpf, $endereco, $id_cargo, $sexo, $senha);
+
+	}
+
 
 }
 
