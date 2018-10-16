@@ -1,16 +1,11 @@
 <?php
 
-require_once("../model/Funcionario.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/model/Funcionario.php");
 
 class FuncionarioController {
 
 
 	public function login($nome, $senha) {
-		
-		if (isset($_POST['nome']) and isset($_POST['senha'])) {
-
-			$nome = $_POST['nome'];
-			$senha = $_POST['senha'];
 
 			$funcionario = new Funcionario();
 
@@ -20,8 +15,8 @@ class FuncionarioController {
 
 			$_SESSION['nome'] = $nome;
 
-			header("Location: ../view/Home.php");
-	}
+			header("Location: /OdontoSystem/view/Home.php");
+	
 
 	}
 

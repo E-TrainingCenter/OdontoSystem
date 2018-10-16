@@ -1,3 +1,18 @@
+<?php
+
+require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/FuncionarioController.php");
+
+if (isset($_POST['nome']) and $_POST['senha']) {
+    $nome = $_POST['nome'];
+    $senha = $_POST['senha'];
+
+    $funcionariocontroller = new FuncionarioController();
+
+    $funcionariocontroller->login($nome, $senha);
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -32,7 +47,7 @@
                 <div class="col-sm-6 col-md-4 col-md-offset-6 ">
                     <h1 class="text-center login-title">OdontoSystem  Login</h1>
                     <div class="account-wall">
-                        <form class="form-signin" method="POST" action="controller/FuncionarioController.php">
+                        <form class="form-signin" method="POST" action="">
                             <input type="text" class="form-control" placeholder="Nome" name="nome" id="nome" required autofocus>
                             <input type="password" class="form-control" placeholder="Senha" name="senha" id="senha" required>
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>

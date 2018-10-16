@@ -1,6 +1,6 @@
 <?php
 
-require_once("../config/DB/Banco.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/config/DB/Banco.php");
 
 class Funcionario {
 	
@@ -57,13 +57,13 @@ class Funcionario {
 		return $this->sexo;
 	}
 
-	public function setSexo($sexo){
-		$this->sexo = $sexo;
+	public function setSenha($senha){
+		$this->senha = $senha;
 	}
 
-	public function getSexo() {
+	public function getSenha() {
 
-		return $this->sexo;
+		return $this->senha;
 	}
 
 	public function add($nome, $cpf, $endereco, $id_cargo, $sexo) {
@@ -107,7 +107,7 @@ class Funcionario {
 
 	public function listAll() {
 
-		$conn Banco::connect();
+		$conn = Banco::connect();
 
 		$stmt = $conn->prepare("SELECT nome FROM Funcionario");
 
