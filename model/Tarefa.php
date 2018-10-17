@@ -94,19 +94,15 @@ class Tarefa {
         return $results;
     }
 
-    public function EnviaTarefa($descricao, $data_inicio, $data_fim, $id_funcionario_destinatario, $id_funcionario_remetente, $status, $excluido, $assunto){
+    public function EnviaTarefa($descricao, $data_fim, $id_funcionario_remetente, $assunto){
         $conn = Banco::connect();
 
-        $stmt = $conn->prepare("INSERT INTO Tarefa (descricao, data_inicio, data_fim, id_funcionario_remetente, id_funcionario_destinatario, status, excluido, assunto) VALUES (:descricao, :data_inicio, :data_fim, :id_funcionario_remetente, :id_funcionario_destinatario, :status, :excluido, :assunto)");
+        $stmt = $conn->prepare("INSERT INTO Tarefa (descricao, data_fim, id_funcionario_remetente, assunto) VALUES (:descricao, :data_fim, :id_funcionario_remetente, :assunto)");
 
         
         $stmt->bindParam(":descricao", $descricao); 
-		$stmt->bindParam(":data_inicio", $data_inicio);
 		$stmt->bindParam(":data_fim", $data_fim);
-		$stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
         $stmt->bindParam(":id_funcionario_remetente", $id_funcionario_remetente);
-        $stmt->bindParam(":status", $status);
-        $stmt->bindParam(":excluido", $excluido);
         $stmt->bindParam(":assunto", $assunto);
 
         if($stmt->execute()){
