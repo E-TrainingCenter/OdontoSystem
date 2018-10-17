@@ -1,6 +1,6 @@
 <?php
 
-require_once("../config/DB/Banco.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/config/DB/Banco.php");
 
 
 class Mensagem {
@@ -82,11 +82,12 @@ class Mensagem {
 		return $this->visualizado;
 	}
 
-	public function listAll() {
+	public function listAll($id_funcionario_destinatario) {
 
 		$conn = Banco::connect();
 
-		$stmt = $connt->prepare("SELECT * FROM Mensagem WHERE excluido = 0");
+		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE excluido = 0 and id_funcionario_destinatario = :id_funcionario_destinatario");
+		$stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
 
 		$stmt->execute();
 
@@ -131,11 +132,12 @@ class Mensagem {
 			return false;
 	}
 
-	public function listExcluidos() {
+	public function listExcluidos($id_funcionario_destinatario) {
 
 		$conn = Banco::connect();
 
-		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE excluido = 1");
+		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE excluido = 1 and id_funcionario_destinatario = :id_funcionario_destinatario");
+		$stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
 
 		$stmt->execute();
 		
@@ -143,6 +145,20 @@ class Mensagem {
 
 		return $results;
 
+	}
+
+	public function listEnviadas($id_funcionario_remetente) {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE excluido = 0 and id_funcionario_remetente = :id_funcionario_remetente");
+		$stmt->bindParam(":id_funcionario_remetente", $id_funcionario_remetente);
+
+		$stmt->execute();
+		
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $results;
 	}
 
 

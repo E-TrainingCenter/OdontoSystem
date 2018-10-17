@@ -12,8 +12,9 @@ class FuncionarioController {
 			$funcionario->login($nome, $senha);
 
 			session_start();
-
+			
 			$_SESSION['nome'] = $nome;
+			$_SESSION['id_funcionario'] = $funcionario->returnIdByNome($nome);
 
 			header("Location: /OdontoSystem/view/Home.php");
 	

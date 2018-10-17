@@ -1,7 +1,7 @@
 <?php
 
 
-require_once("../config/DB/Banco.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/config/DB/Banco.php");
 
 class Tarefa {
     private $id_tarefa;
@@ -85,7 +85,8 @@ class Tarefa {
     public function listAll() {
         $conn = Banco::connect();
 
-        $stmt = $connt->prepare("SELECT * FROM Tarefa WHERE excluido = 0");
+        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 0 and id_funcionario_destinatario = :id_funcionario_destinatario");
+        $stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
 
         $stmt->execute();
 
@@ -114,11 +115,12 @@ class Tarefa {
     }
 
 
-    public function listExcluidos() {
+    public function listExcluidos($id_funcionario_destinatario) {
 
         $conn = Banco::connect();
 
-        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 1");
+        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 1 and id_funcionario_destinatario = :id_funcionario_destinatario");
+        $stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
 
         $stmt->execute();
         
@@ -126,6 +128,20 @@ class Tarefa {
 
         return $results;
 
+    }
+
+    public function listEnviadas($id_funcionario_remetente) {
+
+        $conn = Banco::connect();
+
+        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 0 and id_funcionario_remetente = :id_funcionario_remetente");
+        $stmt->bindParam(":id_funcionario_remetente", $id_funcionario_remetente);
+
+        $stmt->execute();
+        
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
     }
 
     public function AtualizaStatus($status, $id_tarefa) {

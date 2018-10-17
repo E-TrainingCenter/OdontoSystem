@@ -119,6 +119,20 @@ class Funcionario {
 		return $results;
 	}
 
+	public function returnIdByNome($nome) {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("SELECT id_funcionario FROM Funcionario WHERE nome = :nome");
+		$stmt->bindParam(":nome", $nome);
+
+		$stmt->execute();
+
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $results[0]['id_funcionario'];
+	}
+
 
 
 

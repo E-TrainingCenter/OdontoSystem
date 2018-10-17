@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require_once("../view/header.php");
 
 ?>
@@ -17,6 +15,9 @@ require_once("../view/header.php");
 
 </style>
 <body>
+
+	<h3>Bem Vindo <?php echo $_SESSION['id_funcionario'] . ' | ' . $_SESSION['nome']; ?></h3>
+
 	<div style = "width: 100vw; padding: 1vh 5vw 0vw 5vw">
 		<table> 
 			<th class="table1">
