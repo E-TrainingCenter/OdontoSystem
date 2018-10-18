@@ -26,7 +26,7 @@ session_start();
     <div class="navbar">
         <a href = "/OdontoSystem/Home.php.php"> Início  </a> 
         <a href = "/OdontoSystem/view/Mensagem/caixa_entrada.php"> Mensagens  </a> 
-        <a href = "Tarefa/caixa_entrada.php"> Tarefas  </a> 
+        <a href = "../Tarefa/caixa_entrada.php"> Tarefas  </a> 
         <a href = "#Treinamentos"> Treinamentos  </a> 
         <a href = "#Administração"> Administração  </a>   
         <a href="#Sair">Sair</a>

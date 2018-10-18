@@ -4,9 +4,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/TarefaControl
 require_once("../header.php");
 
 $tarefacontroller = new TarefaController();
+$tarefa = $tarefacontroller->listAll();
 
-$tarefas = $tarefacontroller->listAll();
+var_dump($tarefa);
 
-var_dump($tarefas);
 
 ?>
