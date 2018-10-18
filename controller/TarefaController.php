@@ -34,6 +34,13 @@ class TarefaController{
 
 		return $tarefas;
 	}
+	
+	public function returnNomeById($id_funcionario) {
+
+		$nome = Tarefa::returnNomeById($id_funcionario);
+
+		return $nome;
+	}
 }
 
 ?>
