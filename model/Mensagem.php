@@ -98,11 +98,13 @@ class Mensagem {
 	}
 
 	public function EnviaMensagem($mensagem, $data, $id_funcionario_remetente, $id_funcionario_destinatario, $excluido, $assunto, $visualizado) {
+
 		$conn = Banco::connect();
 
 		$stmt = $conn->prepare("INSERT INTO Mensagem (mensagem, data, id_funcionario_remetente, id_funcionario_destinatario, excluido, assunto, visualizado) VALUES (:mensagem, :data, :id_funcionario_remetente, :id_funcionario_destinatario, :excluido, :assunto, :visualizado)");
 
 		$stmt->bindParam(":mensagem", $mensagem);
+		$stmt->bindParam(":data", $data);
 		$stmt->bindParam(":id_funcionario_remetente", $id_funcionario_remetente);
 		$stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
 		$stmt->bindParam(":excluido", $excluido);
@@ -159,6 +161,34 @@ class Mensagem {
 		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		return $results;
+	}
+
+	public static function returnNomeById($id_funcionario) {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("SELECT nome FROM Mensagem, Funcionario WHERE id_funcionario = :id_funcionario");
+		$stmt->bindParam(":id_funcionario", $id_funcionario);
+
+		$stmt->execute();
+
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $results[0]['nome'];
+	}
+
+	public function GetMensagemById($id_mensagem) {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE id_mensagem = :id_mensagem");
+		$stmt->bindParam(":id_mensagem", $id_mensagem);
+
+		$stmt->execute();
+
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $results[0];
 	}
 
 

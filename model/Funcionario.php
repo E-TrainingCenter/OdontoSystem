@@ -106,7 +106,7 @@ class Funcionario {
 
 	}
 
-	public function listAll() {
+	public static function listAll() {
 
 		$conn = Banco::connect();
 
@@ -132,8 +132,6 @@ class Funcionario {
 
 		return $results[0]['id_funcionario'];
 	}
-
-
 
 
 }
