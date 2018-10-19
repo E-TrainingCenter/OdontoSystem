@@ -129,9 +129,9 @@ class Funcionario {
 		$stmt->bindParam(":nome", $nome);
 
 		$stmt->execute();
-
+		
 		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+		
 		return $results[0]['id_funcionario'];
 	}
 

@@ -38,7 +38,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/view/header.php");
     </div>
 
     <div class="col-sm-4">
-        <h3>GRUPOS</h3><br>
+       <a href="/OdontoSystem/view/Administracao/Grupo/index.php"><h3>GRUPOS</h3></a><br>
     </div>
 
     <div class="col-sm-4">

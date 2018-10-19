@@ -43,6 +43,33 @@ class Grupo {
 		 	return false;
 	}
 
+	public function listAll() {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("SELECT * FROM Grupo WHERE ativo = 1");
+
+		$stmt->execute();
+
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $results;
+	}
+
+
+	public function inativar($id_grupo) {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("UPDATE Grupo SET ativo = 0 WHERE id_grupo = :id_grupo");
+		$stmt->bindParam(":id_grupo", $id_grupo);
+
+		if ($stmt->execute()) 
+			return true;
+		else 
+			return false;
+	}
+
 	
 
 

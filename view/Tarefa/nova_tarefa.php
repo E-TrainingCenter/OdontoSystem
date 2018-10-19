@@ -12,8 +12,9 @@ if (isset($_POST['tarefa']) && isset($_POST['destinatario']) && isset($_POST['as
 	$id_funcionario_remetente = $_SESSION['id_funcionario'];
 	$id_funcionario_destinatario = $tarefacontroller->returnIdByNome($_POST['destinatario']);
 	$assunto = $_POST['assunto'];
-
-	$tarefacontroller->EnviaTarefa($tarefa, $id_funcionario_remetente, $id_funcionario_destinatario, $assunto);
+	$data_fim = $_POST['data_fim'];
+	//echo "$tarefa  -  $id_funcionario_remetente - $id_funcionario_destinatario - $assunto - $data_fim"; exit;
+	$tarefacontroller->EnviaTarefa($tarefa, $data_fim, $id_funcionario_remetente, $id_funcionario_destinatario, $assunto);
 }
 
 ?>
@@ -48,8 +49,10 @@ if (isset($_POST['tarefa']) && isset($_POST['destinatario']) && isset($_POST['as
 			</div>
 			<br>
 			<div class="row">
-				<textarea name="mensagem" class="form-control"></textarea>
+				<textarea name="tarefa" class="form-control"></textarea>
 			</div>
+			Prazo: <input type="date" name="data_fim" class="form-control">
+
 			<br>
 			<button type="submit" class="btn btn-primary btn-lg botao">Enviar</button>
 		</div>

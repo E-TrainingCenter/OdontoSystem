@@ -95,15 +95,19 @@ class Tarefa {
         return $results;
     }
 
-    public function EnviaTarefa($descricao, $data_fim, $id_funcionario_remetente, $assunto){
+    public function EnviaTarefa($descricao, $data_inicio, $data_fim, $id_funcionario_remetente, $id_funcionario_destinatario, $status, $excluido, $assunto){
         $conn = Banco::connect();
-
-        $stmt = $conn->prepare("INSERT INTO Tarefa (descricao, data_fim, id_funcionario_remetente, assunto) VALUES (:descricao, :data_fim, :id_funcionario_remetente, :assunto)");
+       
+        $stmt = $conn->prepare("INSERT INTO Tarefa (descricao, data_inicio, data_fim, id_funcionario_remetente, id_funcionario_destinatario, status, excluido, assunto) VALUES (:descricao, :data_inicio, :data_fim, :id_funcionario_remetente, :id_funcionario_destinatario, :status, :excluido, :assunto)");
 
         
         $stmt->bindParam(":descricao", $descricao); 
+        $stmt->bindParam(":data_inicio", $data_inicio);
 		$stmt->bindParam(":data_fim", $data_fim);
         $stmt->bindParam(":id_funcionario_remetente", $id_funcionario_remetente);
+        $stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
+        $stmt->bindParam(":status", $status);
+        $stmt->bindParam(":excluido", $excluido);
         $stmt->bindParam(":assunto", $assunto);
 
         if($stmt->execute()){
@@ -168,6 +172,20 @@ class Tarefa {
 
 		return $results[0]['nome'];
 	}
+
+    public function GetTarefaById($id_tarefa) {
+        $conn = Banco::connect();
+
+        $stmt = $conn->prepare("SELECT id_funcionario_remetente, data_fim, status, descricao, assunto FROM Tarefa WHERE id_tarefa = :id_tarefa");
+        $stmt->bindParam(":id_tarefa", $id_tarefa);
+
+        $stmt->execute();
+
+       $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+       return $results[0];
+
+    }
 
 
 

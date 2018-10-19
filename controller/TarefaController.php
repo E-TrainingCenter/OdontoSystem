@@ -3,11 +3,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/model/Tarefa.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/model/Funcionario.php");
 
 class TarefaController{
-
-    public function AddTarefa($descricao, $data_fim, $id_funcionario_remetente, $assunto) {
-        $tarefa = new Tarefa();
-        $tarefa->EnviarTarefa($descricao, $data_fim, $id_funcionario_remetente, $assunto);
-	}
 	
     public function listAll() {
 		$tarefa = new Tarefa();
@@ -48,16 +43,25 @@ class TarefaController{
 		return $id_funcionario;
 	}
 
-	public function EnviaTarefa($descricao, $data_fim, $id_funcionario_destinatario, $assunto) {
-
+	public function EnviaTarefa($descricao, $data_fim, $id_funcionario_remetente, $id_funcionario_destinatario, $assunto) {
+		//echo "$descricao - $data_fim - $id_funcionario_remetente - $id_funcionario_destinatario - $assunto"; exit;
 		$tarefa = new Tarefa();
 
 		date_default_timezone_set('America/Sao_Paulo');
 		$date = date('Y-m-d H:i');
 
-		$msg->EnviaTarefa($descricao, $data_fim, $id_funcionario_destinatario, $assunto);
+		$tarefa->EnviaTarefa($descricao, $date, $data_fim, $id_funcionario_remetente, $id_funcionario_destinatario, "A fazer", 0, $assunto);
 
-		header("Location: /OdontoSystem/view/Mensagem/caixa_entrada.php");
+		header("Location: /OdontoSystem/view/Tarefa/caixa_entrada.php");
+	}
+
+	public function GetTarefaById($id_tarefa) {
+
+		$tarefa = new Tarefa();
+
+		$tarefa = $tarefa->GetTarefaById($id_tarefa);
+		
+		return $tarefa;
 	}
 
 }
