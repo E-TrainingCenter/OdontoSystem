@@ -11,6 +11,7 @@ class Funcionario {
 	private $id_cargo;
 	private $sexo;
 	private $senha;
+	private $ativo;
 
 	public function setNome($nome){
 		$this->nome = $nome;
@@ -66,11 +67,11 @@ class Funcionario {
 		return $this->senha;
 	}
 
-	public function add($nome, $cpf, $endereco, $id_cargo, $sexo, $senha) {
+	public function add($nome, $cpf, $endereco, $id_cargo, $sexo, $senha, $ativo) {
 
 		$conn = Banco::connect();
 
-		$stmt = $conn->prepare("INSERT INTO Funcionario (nome, cpf, endereco, id_cargo, sexo, senha) VALUES (:nome, :cpf, :endereco, :id_cargo, :sexo, :senha)");
+		$stmt = $conn->prepare("INSERT INTO Funcionario (nome, cpf, endereco, id_cargo, sexo, senha, ativo) VALUES (:nome, :cpf, :endereco, :id_cargo, :sexo, :senha, :ativo)");
 
 		$stmt->bindParam(":nome", $nome); 
 		$stmt->bindParam(":cpf", $cpf);
@@ -78,6 +79,7 @@ class Funcionario {
 		$stmt->bindParam(":id_cargo", $id_cargo);
 		$stmt->bindParam(":sexo", $sexo);
 		$stmt->bindParam(":senha", $senha);
+		$stmt->bindParam(":ativo", $ativo);
 
 		$stmt->execute();
 
@@ -110,7 +112,7 @@ class Funcionario {
 
 		$conn = Banco::connect();
 
-		$stmt = $conn->prepare("SELECT nome FROM Funcionario");
+		$stmt = $conn->prepare("SELECT id_funcionario, nome FROM Funcionario WHERE ativo = 1");
 
 		$stmt->execute();
 
@@ -131,6 +133,19 @@ class Funcionario {
 		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		return $results[0]['id_funcionario'];
+	}
+
+	public function inativar($id_funcionario) {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("UPDATE Funcionario SET ativo = 0 WHERE id_funcionario = :id_funcionario");
+		$stmt->bindParam(":id_funcionario", $id_funcionario);
+
+		if ($stmt->execute()) 
+			return true;
+		else 
+			return false;
 	}
 
 

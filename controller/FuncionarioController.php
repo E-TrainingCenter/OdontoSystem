@@ -22,8 +22,27 @@ class FuncionarioController {
 
 	public function CadastrarFuncionario($nome, $cpf, $endereco, $id_cargo, $sexo, $senha){
 		$funcionario = new Funcionario();
-		$funcionario->add($nome, $cpf, $endereco, $id_cargo, $sexo, $senha);
+		$funcionario->add($nome, $cpf, $endereco, $id_cargo, $sexo, $senha, 1);
 
+		header("Location: /OdontoSystem/view/Administracao/Funcionario/index.php");
+	}
+
+	public function listAll() {
+
+		$funcionario = new Funcionario();
+
+		$results = $funcionario->listAll();
+
+		return $results;
+	}
+
+	public function inativar($id_funcionario) {
+
+		$funcionario = new Funcionario();
+
+		$funcionario->inativar($id_funcionario);
+
+		header("Location: /OdontoSystem/view/Administracao/Funcionario/index.php");
 	}
 
 
