@@ -1,38 +1,74 @@
 <?php
-require_once("../view/header.php");
-
+	require_once("../view/header.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/MensagemController.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/TarefaController.php");
 ?>
-<style type="text/css">
-
-.table1 {	
-	width: 30vw; 
-	border: solid 1px #ddd; 
-	font-size: 6vh; 
-	padding: 1vh; 
-	margin-top: 10px; 
-	text-align: center;
-}
-
-</style>
+<link href="/OdontoSystem/resources/css/layoutcss.css" rel="stylesheet">
 <body>
 
-	<h3>Bem Vindo <?php echo $_SESSION['id_funcionario'] . ' | ' . $_SESSION['nome']; ?></h3>
-
 	<div style = "width: 100vw; padding: 1vh 5vw 0vw 5vw">
-		<table> 
-			<th class="table1">
-				Mensagens
-			</th>
-			<th class="table1">
-				Tarefas
-			</th>
-			<th class="table1"	>
-				Treinamentos
-			</th>
+		<table class="table1"> 
+			<tr> 
+				<th class = "table1th">
+					Mensagens
+				</th>
+		
+			
+				<th class = "table1th">
+					Tarefas
+				</th>
+
+				<th class = "table1th">
+					Treinamentos
+				</th>
+
+			</tr>
+			
+			<tr>
+				<td class="table1tr">
+					<?php					
+						$mensagemcontroller = new MensagemController();
+						$msgs = $mensagemcontroller->listAll();
+						
+						foreach($msgs as $key => $value) {
+					?>
+					<p>
+						<?php
+								echo $value['data']. "  - " . $value['assunto'];
+								
+							}
+						?>
+					</p>          
+				</td>
+				<td class="table1tr">
+					<?php					
+						$tarefacontroller = new TarefaController();
+						$tarefas = $tarefacontroller->listAll();
+						
+						foreach($tarefas as $key => $value) {
+					?>
+					<p>
+						<?php
+								echo $value['data_inicio']. "  - " . $value['descricao'];
+								
+							}
+						?>
+					</p>          
+				</td>
+				<td class="table1tr">
+         
+				</td>
+			</tr>
+
+				
+
 			
 		</table>
 	</div>           
 
 </body>
-
+<?php
+	require_once("../view/footer.php");
+?>
 </html>
+
