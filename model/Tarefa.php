@@ -82,7 +82,7 @@ class Tarefa {
         return $this->assunto;
     }
 
-    public function listAll() {
+    public function listAll($id_funcionario_destinatario) {
         $conn = Banco::connect();
 
         $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 0 and id_funcionario_destinatario = :id_funcionario_destinatario");
@@ -154,6 +154,20 @@ class Tarefa {
         else
             return false;
     }
+
+    public static function returnNomeById($id_funcionario) {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("SELECT nome FROM Tarefa, Funcionario WHERE id_funcionario = :id_funcionario");
+		$stmt->bindParam(":id_funcionario", $id_funcionario);
+
+		$stmt->execute();
+
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $results[0]['nome'];
+	}
 
 
 
