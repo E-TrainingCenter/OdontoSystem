@@ -148,4 +148,7 @@ if (isset($_GET['id_remove']) && $_GET['id_treinamento']) {
 
 
 </body>
+<?php
+	require_once("../../footer.php");
+?>
 </html>

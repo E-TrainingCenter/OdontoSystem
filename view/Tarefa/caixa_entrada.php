@@ -66,5 +66,8 @@ $tarefas = $tarefacontroller->listAll();
 
 
 </body>
+<?php
+	require_once("../footer.php");
+?>
 
 </html>

@@ -51,4 +51,7 @@ if (isset($_POST['descricao'])) {
 
 
 </body>
+<?php
+	require_once("../../footer.php");
+?>
 </html>

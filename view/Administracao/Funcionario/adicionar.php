@@ -68,4 +68,8 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
 
 
 </body>
+
+<?php
+	require_once("../../footer.php");
+?>
 </html>
