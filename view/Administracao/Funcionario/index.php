@@ -6,12 +6,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/FuncionarioCo
 $funcionariocontroller = new FuncionarioController();
 
 $funcionarios = $funcionariocontroller->listAll();
+$funcionarios_inativos = $funcionariocontroller->listInativos();
 
 if (isset($_GET['id_inativar'])) {
 
 	$id_funcionario = $_GET['id_inativar'];
 
 	$funcionariocontroller->inativar($id_funcionario);
+}
+
+if (isset($_GET['id_ativar'])) {
+
+	$id_funcionario = $_GET['id_ativar'];
+
+	$funcionariocontroller->ativar($id_funcionario);
 }
 
 ?>
@@ -44,7 +52,7 @@ if (isset($_GET['id_inativar'])) {
 							<tr>
 								<th>Funcionarios</th>
 
-								<th>Inativar</th>
+								<th>Ativar</th>
 
 								<th>Editar</th>
 							</tr>
@@ -62,6 +70,51 @@ if (isset($_GET['id_inativar'])) {
 
 										echo "<td> <a href='/OdontoSystem/view/Administracao/Funcionario/index.php?id_inativar=$id_funcionario'>Inativar</a> </td>";
 										echo "<td> <a href='#inativar'>Editar</a> </td>";
+										echo "</tr>";
+									}
+									
+								
+				
+								?>
+							
+						</tbody>
+					
+					</table>
+
+				</div>
+
+			</div>
+		</div>
+
+
+<h1>Funcionarios Inativos</h1>
+		<div class="row">
+			<div class="panel">
+				<div class="panel-body">
+
+					<table class="table"> 
+						<thead>
+							<tr>
+								<th>Funcionarios</th>
+
+								<th>Ativar</th>
+
+								<th>Editar</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							
+								<?php
+
+									foreach ($funcionarios_inativos as $key => $value) {
+										$id_funcionario = $value['id_funcionario'];
+
+										echo "<tr>";
+										echo "<td>". $value['nome']. "</td>";	
+
+										echo "<td> <a href='/OdontoSystem/view/Administracao/Funcionario/index.php?id_ativar=$id_funcionario'>ativar</a> </td>";
+										echo "<td> <a href='#ativar'>Editar</a> </td>";
 										echo "</tr>";
 									}
 									
