@@ -61,4 +61,8 @@ if (isset($_POST['tarefa']) && isset($_POST['destinatario']) && isset($_POST['as
 
 
 </body>	
+
+<?php
+	require_once("../footer.php");
+?>
 </html>

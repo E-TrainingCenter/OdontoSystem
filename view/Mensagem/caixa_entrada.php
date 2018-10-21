@@ -6,6 +6,8 @@ require_once("../header.php");
 $mensagemcontroller = new MensagemController();
 
 $msgs = $mensagemcontroller->listAll();
+
+
 ?>
 
 <body>
@@ -37,13 +39,21 @@ $msgs = $mensagemcontroller->listAll();
                     </div>
                     <div class="panel-body">
 
+
+                        <table style="width:100%">
+                          <tr>
+                          <th> Remetente </th>
+                          <th> Assunto </th>
+                          <th> Data </th>
+                          </tr>
                         <?php 
 
                             foreach ($msgs as $key => $value) {
                                 
                                 $nome_remetente = $mensagemcontroller->returnNomeById($value['id_funcionario_remetente']);
                                 $id_mensagem = $value['id_mensagem'];
-                                echo "<a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'> ". $nome_remetente . " || " . $value['assunto'] ." </a><br>";
+                                $data = $value['data'];
+                                echo "<tr><td> ". $nome_remetente . " </td> <td> <a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>" . $value['assunto'] ." </a><br></td><td>$data</td> </th>";
                                
                             }   
                         ?>
@@ -58,5 +68,9 @@ $msgs = $mensagemcontroller->listAll();
 
 
 </body>
+<?php
+	require_once("../footer.php");
+?>
+
 
 </html>

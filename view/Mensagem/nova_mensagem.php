@@ -86,4 +86,7 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario-grupo']) && isset($_
 
 
 </body>	
+<?php
+	require_once("../footer.php");
+?>
 </html>

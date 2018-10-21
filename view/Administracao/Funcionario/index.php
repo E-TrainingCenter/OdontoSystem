@@ -137,4 +137,8 @@ if (isset($_GET['id_ativar'])) {
 
 </body>
 
+<?php
+	require_once("../../footer.php");
+?>
+
 </html>

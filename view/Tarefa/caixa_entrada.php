@@ -37,13 +37,21 @@ $tarefas = $tarefacontroller->listAll();
                     </div>
                     <div class="panel-body">
 
+                          <table style="width:100%">
+                          <tr>
+                          <th> Remetente </th>
+                          <th> Assunto </th>
+                          <th> Prazo </th>
+                          </tr>
+
                         <?php 
 
                             foreach ($tarefas as $key => $value) {
                                 
                                 $nome_remetente = $tarefacontroller->returnNomeById($value['id_funcionario_remetente']);
                                 $id_tarefa = $value['id_tarefa'];
-                                echo "<a href='/OdontoSystem/view/Tarefa/visualizar_tarefa.php?id=$id_tarefa'> ". $nome_remetente . " || " . $value['assunto'] ." </a><br>";
+                                $data = $value['data_fim'];
+                                echo "<tr><th> ". $nome_remetente . " </th><th><a href='/OdontoSystem/view/Tarefa/visualizar_tarefa.php?id=$id_tarefa'>" . $value['assunto'] ." </a></th><td>$data</td><br></tr>";
                                
                             }   
                         ?>
@@ -58,5 +66,8 @@ $tarefas = $tarefacontroller->listAll();
 
 
 </body>
+<?php
+	require_once("../footer.php");
+?>
 
 </html>

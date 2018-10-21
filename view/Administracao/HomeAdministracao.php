@@ -48,5 +48,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/view/header.php");
 </div>
 
 </body>
-
+<?php
+	require_once("../footer.php");
+?>
 </html>

@@ -84,5 +84,7 @@ if (isset($_GET['id_inativar'])) {
 
 
 </body>
-
+<?php
+	require_once("../../footer.php");
+?>
 </html>
