@@ -1,6 +1,6 @@
 <?php 
 
-require_once("../config/DB/Banco.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/config/DB/Banco.php");
 
 class Cargo{
     private $id_cargo;
@@ -52,7 +52,21 @@ class Cargo{
        
 		return $results;
 
-	}
+    }
+    
+    public static function listAll(){
+        $conn = Banco::connect();
+
+        $stmt = $conn->prepare("SELECT id_cargo, cargo FROM Cargo");
+
+        $stmt->execute();
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
+
+    
 }
 
 

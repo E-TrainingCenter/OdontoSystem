@@ -1,7 +1,12 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/view/header.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/FuncionarioController.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/view/header.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/FuncionarioController.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/CargoController.php");
+
+	$cargo = new CargoController();
+	$c = $cargo->ListAll();
+
 
 if (isset($_POST['nome']) && isset($_POST['senha'])) {
 
@@ -13,6 +18,9 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
 	$senha = $_POST['senha'];
 
 	$funcionariocontroller = new FuncionarioController();
+	
+
+	
 
 	$funcionariocontroller->CadastrarFuncionario($nome, $cpf, $endereco, $id_cargo, $sexo, $senha);
 
@@ -37,9 +45,19 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
 				Sexo: <br> Masculino <input type="radio" name="sexo" value="Masculino" ><br> Feminino<input type="radio" name="sexo" value="Feminino"><br>
 				CPF: <input type="text" name="cpf" class="form-control">
 				Endereco: <input type="text" name="endereco" class="form-control">
-				Cargo: <select class="form-control" name="cargo"> 
+				Cargo: 
+				<select class="form-control" name="destinatario">	
 					<option>---</option>
-				 </select>
+					<?php  
+
+					foreach ($c as $key => $value) {
+							$c = $value['cargo'];
+							echo "<option value=$c> ". $c ." </option>";
+						}	
+
+					?>
+
+				</select>
 				Senha: <input type="password" name="senha" class="form-control"><br>
 
 				<button type="submit" class="btn btn-success">Cadastrar</button> <br> <br>
