@@ -43,7 +43,7 @@ class Grupo {
 		 	return false;
 	}
 
-	public function listAll() {
+	public static function listAll() {
 
 		$conn = Banco::connect();
 

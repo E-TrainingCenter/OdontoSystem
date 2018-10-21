@@ -1,12 +1,15 @@
+
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/MensagemController.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/GrupoController.php");
 require_once("../header.php");
 
 $mensagemcontroller = new MensagemController();
 
 $funcionarios = $mensagemcontroller->listAllFuncionarios();
+$grupos = $mensagemcontroller->listAllGrupos();
 
-if (isset($_POST['mensagem']) && isset($_POST['destinatario']) && isset($_POST['assunto'])) {
+if (isset($_POST['mensagem']) && isset($_POST['destinatario']) && isset($_POST['assunto']) && $_POST['destinatario'] != '---') {
 
 	$mensagem = $_POST['mensagem'];
 	$id_funcionario_remetente = $_SESSION['id_funcionario'];
@@ -14,6 +17,16 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario']) && isset($_POST['
 	$assunto = $_POST['assunto'];
 
 	$mensagemcontroller->EnviaMensagem($mensagem, $id_funcionario_remetente, $id_funcionario_destinatario, $assunto);
+}
+
+if (isset($_POST['mensagem']) && isset($_POST['destinatario-grupo']) && isset($_POST['assunto'])) {
+
+	$mensagem = $_POST['mensagem'];
+	$id_funcionario_remetente = $_SESSION['id_funcionario'];
+	$id_grupo_destinatario = $_POST['destinatario-grupo'];
+	$assunto = $_POST['assunto'];
+
+	$mensagemcontroller->EnviaMensagemGrupo($mensagem, $id_funcionario_remetente, $id_grupo_destinatario, $assunto);
 }
 
 ?>
@@ -27,7 +40,7 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario']) && isset($_POST['
 	<form method="POST">
 		<div class="form-group">
 			<div class="row">
-				Para: 
+				Para Funcionario: 
 				<select class="form-control" name="destinatario">	
 					<option>---</option>
 					<?php  
@@ -35,6 +48,21 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario']) && isset($_POST['
 					foreach ($funcionarios as $key => $value) {
 							$nome = $value['nome'];
 							echo "<option value=$nome> ". $nome ." </option>";
+						}	
+
+					?>
+
+				</select>
+
+				Para Grupo de Funcionarios:
+				 <select class="form-control" name="destinatario-grupo">	
+					<option>---</option>
+					<?php  
+
+					foreach ($grupos as $key => $value) {
+							$descricao = $value['descricao'];
+							$id_grupo = $value['id_grupo'];
+							echo "<option value=$id_grupo> ". $descricao ." </option>";
 						}	
 
 					?>

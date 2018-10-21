@@ -2,6 +2,8 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/model/Mensagem.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/model/Funcionario.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/model/Grupo.php");
+
 
 class MensagemController {
 	
@@ -15,6 +17,17 @@ class MensagemController {
 		$msg->EnviaMensagem($mensagem, $date, $id_funcionario_remetente, $id_funcionario_destinatario, 0, $assunto, 0);
 
 		header("Location: /OdontoSystem/view/Mensagem/caixa_entrada.php");
+	}
+
+	public function EnviaMensagemGrupo($mensagem, $id_funcionario_remetente, $id_grupo, $assunto) {
+
+		$funcs = new Grupo();
+		$funcs = $funcs->funcionariosIndisponiveis($id_grupo);
+		
+		foreach ($funcs as $key => $value) {
+			$this->EnviaMensagem($mensagem, $id_funcionario_remetente, $value['id_funcionario'], $assunto);
+		}		
+
 	}
 
 	public function listAll() {
@@ -66,6 +79,13 @@ class MensagemController {
 
 		return $funcs;
 	}
+
+	 public function listAllGrupos() {
+
+	   $grupos = Grupo::listAll();
+
+	   	return $grupos;
+   }
 
 	public function returnIdByNome($nome) {
 

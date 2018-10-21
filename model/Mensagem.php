@@ -86,7 +86,7 @@ class Mensagem {
 
 		$conn = Banco::connect();
 
-		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE excluido = 0 and id_funcionario_destinatario = :id_funcionario_destinatario");
+		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE excluido = 0 and id_funcionario_destinatario = :id_funcionario_destinatario ORDER BY data DESC");
 		$stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
 
 		$stmt->execute();
