@@ -42,7 +42,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/view/header.php");
     </div>
 
     <div class="col-sm-4">
-        <h3>TREINAMENTOS</h3><br>
+       <a href="/OdontoSystem/view/Administracao/Treinamento/index.php"> <h3>TREINAMENTOS</h3></a><br>
     </div>
 </div>
 </div>

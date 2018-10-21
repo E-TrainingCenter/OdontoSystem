@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 21-Out-2018 às 13:48
+-- Generation Time: 21-Out-2018 às 17:14
 -- Versão do servidor: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -97,14 +97,8 @@ CREATE TABLE `funcionario_grupo` (
 --
 
 INSERT INTO `funcionario_grupo` (`id_funcionario_Grupo`, `id_funcionario`, `id_grupo`) VALUES
-(3, 5, 1),
-(4, 6, 1),
-(5, 9, 1),
-(6, 10, 1),
-(7, 3, 3),
-(12, 5, 2),
-(13, 10, 2),
-(14, 9, 2);
+(20, 3, 1),
+(21, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -252,9 +246,39 @@ INSERT INTO `tarefa` (`id_tarefa`, `descricao`, `data_inicio`, `data_fim`, `id_f
 CREATE TABLE `treinamento` (
   `id_treinamento` int(11) NOT NULL,
   `descricao` varchar(45) NOT NULL,
-  `id_funcionario_responsavel` int(11) NOT NULL,
-  `id_funcionario_aluno` int(11) NOT NULL
+  `id_responsavel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `treinamento`
+--
+
+INSERT INTO `treinamento` (`id_treinamento`, `descricao`, `id_responsavel`) VALUES
+(1, 'Vendas', 3),
+(2, 'Caixa', 4),
+(3, 'Arrancar um dente', 4),
+(4, 'Arranacar 2 dente', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `treinamento_funcionario`
+--
+
+CREATE TABLE `treinamento_funcionario` (
+  `id_treinamento_funcionario` int(11) NOT NULL,
+  `id_treinamento` int(11) NOT NULL,
+  `id_funcionario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `treinamento_funcionario`
+--
+
+INSERT INTO `treinamento_funcionario` (`id_treinamento_funcionario`, `id_treinamento`, `id_funcionario`) VALUES
+(7, 1, 6),
+(8, 2, 6),
+(9, 2, 5);
 
 --
 -- Indexes for dumped tables
@@ -342,9 +366,15 @@ ALTER TABLE `tarefa`
 -- Indexes for table `treinamento`
 --
 ALTER TABLE `treinamento`
-  ADD PRIMARY KEY (`id_treinamento`),
-  ADD KEY `fk_Treinamento_Funcionario1_idx` (`id_funcionario_responsavel`),
-  ADD KEY `fk_Treinamento_Funcionario2_idx` (`id_funcionario_aluno`);
+  ADD PRIMARY KEY (`id_treinamento`);
+
+--
+-- Indexes for table `treinamento_funcionario`
+--
+ALTER TABLE `treinamento_funcionario`
+  ADD PRIMARY KEY (`id_treinamento_funcionario`),
+  ADD KEY `fk_Treinamento_Funcionario_Treinamento1_idx` (`id_treinamento`),
+  ADD KEY `fk_Treinamento_Funcionario_Funcionario1_idx` (`id_funcionario`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -364,7 +394,7 @@ ALTER TABLE `funcionario`
 -- AUTO_INCREMENT for table `funcionario_grupo`
 --
 ALTER TABLE `funcionario_grupo`
-  MODIFY `id_funcionario_Grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_funcionario_Grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `grupo`
 --
@@ -394,7 +424,12 @@ ALTER TABLE `tarefa`
 -- AUTO_INCREMENT for table `treinamento`
 --
 ALTER TABLE `treinamento`
-  MODIFY `id_treinamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_treinamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `treinamento_funcionario`
+--
+ALTER TABLE `treinamento_funcionario`
+  MODIFY `id_treinamento_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --
@@ -447,11 +482,11 @@ ALTER TABLE `tarefa`
   ADD CONSTRAINT `fk_Tarefa_Funcionario2` FOREIGN KEY (`id_funcionario_destinatario`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limitadores para a tabela `treinamento`
+-- Limitadores para a tabela `treinamento_funcionario`
 --
-ALTER TABLE `treinamento`
-  ADD CONSTRAINT `fk_Treinamento_Funcionario1` FOREIGN KEY (`id_funcionario_responsavel`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Treinamento_Funcionario2` FOREIGN KEY (`id_funcionario_aluno`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `treinamento_funcionario`
+  ADD CONSTRAINT `fk_Treinamento_Funcionario_Funcionario1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Treinamento_Funcionario_Treinamento1` FOREIGN KEY (`id_treinamento`) REFERENCES `treinamento` (`id_treinamento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

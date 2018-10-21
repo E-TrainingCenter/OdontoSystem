@@ -35,7 +35,7 @@ if (!(isset($_SESSION['nome']) && isset($_SESSION['id_funcionario']))) {
 			<tr style = "width: 100vw;">
 				<td style = "width: 60vw;"> <h3> OdontoSystem </h3></td>
 				<td style = "width: 36vw; text-align: right;"> Bem Vindo, <?php echo  $_SESSION['nome'];?>. </td>
-				<td style = "width: 3vw; text-align: right;">    <a href="#Sair" >Sair</a></td>
+				<td style = "width: 3vw; text-align: right;">    <a href="#" >Sair</a></td>
 			</tr>	
 		</table>
 				  	
