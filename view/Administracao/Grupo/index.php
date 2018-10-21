@@ -14,6 +14,7 @@ if (isset($_GET['id_inativar'])) {
 	$grupocontroller->inativar($id_grupo);
 }
 
+
 ?>
 
 <body>
@@ -61,7 +62,7 @@ if (isset($_GET['id_inativar'])) {
 										echo "<td>". $value['descricao']. "</td>";	
 
 										echo "<td> <a href='/OdontoSystem/view/Administracao/Grupo/index.php?id_inativar=$id_grupo'>Inativar</a> </td>";
-										echo "<td> <a href='#inativar'>Editar</a> </td>";
+										echo "<td> <a href='/OdontoSystem/view/Administracao/Grupo/editar.php?id_editar=$id_grupo'>Editar</a> </td>";
 										echo "</tr>";
 									}
 									

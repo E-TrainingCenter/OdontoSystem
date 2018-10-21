@@ -45,6 +45,7 @@ class FuncionarioController {
 		header("Location: /OdontoSystem/view/Administracao/Funcionario/index.php");
 	}
 
+	
 
 }
 

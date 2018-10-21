@@ -27,6 +27,71 @@ class GrupoController{
 
    }
 
+   public function funcionariosDisponiveis($id_grupo) {
+
+    $grupo = new Grupo();
+
+    $results = $grupo->funcionariosDisponiveis($id_grupo);
+
+    return $results;
+  }
+
+  public function funcionariosIndisponiveis($id_grupo) {
+
+    $grupo = new Grupo();
+
+    $results = $grupo->funcionariosIndisponiveis($id_grupo);
+
+    return $results;
+  }
+
+   public function editar($id_grupo) {
+      $grupo = new Grupo();
+
+      $grupo->editar($id_grupo);
+
+      header("Location: /OdontoSystem/view/Administracao/Grupo/index.php");
+
+   }
+
+   public function returnGrupoById($id_grupo) {
+
+      $grupo = new Grupo();
+
+      $result = $grupo->returnGrupoById($id_grupo);
+      
+      return $result;
+
+   }
+
+   public function addFuncionario($id_funcionario, $id_grupo) {
+      $grupo = new Grupo();
+
+      $result = $this->returnGrupoById($id_grupo);
+      $id_grupo = $result['id_grupo'];
+
+      $grupo->addFuncionario($id_funcionario, $id_grupo);
+
+      header("Location: /OdontoSystem/view/Administracao/Grupo/editar.php?id_editar=$id_grupo");
+
+   }
+
+   public function removeFuncionario($id_funcionario, $id_grupo) {
+
+      $grupo = new Grupo();
+
+      $result = $this->returnGrupoById($id_grupo);
+      $id_grupo = $result['id_grupo'];
+
+      $grupo->removeFuncionario($id_funcionario, $id_grupo);
+
+      header("Location: /OdontoSystem/view/Administracao/Grupo/editar.php?id_editar=$id_grupo");
+
+
+   }
+
+
+
 }
 
 ?>
