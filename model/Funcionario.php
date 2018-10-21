@@ -121,6 +121,19 @@ class Funcionario {
 		return $results;
 	}
 
+	public static function listInativos() {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("SELECT id_funcionario, nome FROM Funcionario WHERE ativo = 0");
+
+		$stmt->execute();
+
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $results;
+	}
+
 	public function returnIdByNome($nome) {
 
 		$conn = Banco::connect();
@@ -147,6 +160,20 @@ class Funcionario {
 		else 
 			return false;
 	}
+
+	public function ativar($id_funcionario) {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("UPDATE Funcionario SET ativo = 1 WHERE id_funcionario = :id_funcionario");
+		$stmt->bindParam(":id_funcionario", $id_funcionario);
+
+		if ($stmt->execute()) 
+			return true;
+		else 
+			return false;
+	}
+
 
 
 }

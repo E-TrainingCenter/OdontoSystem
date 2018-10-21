@@ -36,11 +36,27 @@ class FuncionarioController {
 		return $results;
 	}
 
+	public function listInativos(){
+		$funcionario = new Funcionario();
+
+		$results = $funcionario->listInativos();
+
+		return $results;
+	}
+
 	public function inativar($id_funcionario) {
 
 		$funcionario = new Funcionario();
 
 		$funcionario->inativar($id_funcionario);
+
+		header("Location: /OdontoSystem/view/Administracao/Funcionario/index.php");
+	}
+
+	public function ativar($id_funcionario) {
+		$funcionario = new Funcionario();
+
+		$funcionario->ativar($id_funcionario);
 
 		header("Location: /OdontoSystem/view/Administracao/Funcionario/index.php");
 	}
