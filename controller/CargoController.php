@@ -15,10 +15,23 @@ class CargoController {
     
     public function GetCargo($id_cargo){
         $cargo = new Cargo();
+
         $resultado = $cargo->GetCargoById($id_cargo);
+
         return $resultado;
     }
 
+    public function ListAll(){
+        $cargo = new Cargo();
+
+        $results = $cargo->ListAll();
+
+        return $results;
+    }
+
+ 
+
+    
     
 
 
