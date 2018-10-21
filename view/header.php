@@ -47,7 +47,7 @@ if (!(isset($_SESSION['nome']) && isset($_SESSION['id_funcionario']))) {
         <a href = "/OdontoSystem/view/Home.php"> Início  </a> 
         <a href = "/OdontoSystem/view/Mensagem/caixa_entrada.php"> Mensagens  </a> 
         <a href = "/OdontoSystem/view/Tarefa/caixa_entrada.php"> Tarefas  </a> 
-        <a href = "#"> Treinamentos  </a> 
+        <a href = "/OdontoSystem/view/Treinamento/caixa_entrada.php"> Treinamentos  </a> 
         <a href = "/OdontoSystem/view/Administracao/HomeAdministracao.php"> Administração  </a>   
         <a href="/OdontoSystem/view/logout.php">Sair</a>
     </div>
