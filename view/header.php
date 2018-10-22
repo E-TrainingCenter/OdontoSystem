@@ -17,7 +17,7 @@ if (!(isset($_SESSION['nome']) && isset($_SESSION['id_funcionario']))) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Home</title>
+    <title>OdontoSystem</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/OdontoSystem/resources/css/bootstrap.min.css" rel="stylesheet">

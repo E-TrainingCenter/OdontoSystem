@@ -34,7 +34,8 @@
 					?>
 					<p>
 						<?php
-								echo $value['data']. "  - " . $value['assunto'];
+								if ($value['visualizado'] == 0)
+									echo $value['data']. "  - " . $value['assunto'];
 								
 							}
 						?>

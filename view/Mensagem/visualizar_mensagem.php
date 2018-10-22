@@ -3,12 +3,14 @@
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/MensagemController.php");
 	require_once("../header.php");
 
+if (isset($_GET['id'])) {
 	$id_mensagem = $_GET['id'];
 
 	$mensagemcontroller = new MensagemController();
 	$msg = $mensagemcontroller->GetMensagemById($id_mensagem);
 
 	$nome = $mensagemcontroller->returnNomeById($msg['id_funcionario_remetente']);
+}
 
 ?>
 
@@ -30,8 +32,7 @@
 		</div>
 		<br>
 		<button class="btn btn-primary btn-lg botao">Responder</button>
-		<button class="btn btn-default btn-lg botao"><a href="/OdontoSystem/view/Mensagem/caixa_entrada.php">Voltar</a></button>
-	</div>
+		<button class="btn btn-default btn-lg botao"><a href="/OdontoSystem/view/Mensagem/caixa_entrada.php">Voltar</a></button>	</div>
 
 </body>
 <?php

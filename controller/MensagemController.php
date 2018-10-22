@@ -97,6 +97,8 @@ class MensagemController {
 		
 		return $id_funcionario;
 	}
+
+	
 }
 
 

@@ -42,7 +42,13 @@ $msgs = $mensagemcontroller->listEnviadas();
                                 
                                 $nome_remetente = $mensagemcontroller->returnNomeById($value['id_funcionario_destinatario']);
                                 $id_mensagem = $value['id_mensagem'];
-                                echo "<a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'> ". $nome_remetente . " || " . $value['assunto'] ." </a><br>";
+
+                                if ($value['visualizado'] == 0) 
+                                    $visualizado = 'Não visualizado';
+                                else
+                                    $visualizado = 'Visualizado';
+
+                                echo "<a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'> ". $nome_remetente . " || " . $value['assunto'] ." || ". $visualizado . "</a><br>";
                                
                             }   
                         ?>
