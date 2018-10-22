@@ -70,6 +70,8 @@ class MensagemController {
 
 		$msg = $mensagem->GetMensagemById($id_mensagem);
 		
+		$mensagem->visualizar($id_mensagem);
+
 		return $msg;
 	}
 

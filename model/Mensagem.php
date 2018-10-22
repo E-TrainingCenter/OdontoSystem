@@ -138,7 +138,7 @@ class Mensagem {
 
 		$conn = Banco::connect();
 
-		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE excluido = 1 and id_funcionario_destinatario = :id_funcionario_destinatario");
+		$stmt = $conn->prepare("SELECT * FROM Mensagem WHERE excluido = 1 and id_funcionario_destinatario = :id_funcionario_destinatario ORDER BY data DESC");
 		$stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
 
 		$stmt->execute();
@@ -189,6 +189,27 @@ class Mensagem {
 		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		return $results[0];
+	}
+
+	public function visualizar($id_mensagem) {
+
+		$conn = Banco::connect();
+
+		$stmt = $conn->prepare("SELECT visualizado FROM Mensagem WHERE id_mensagem = :id_mensagem");
+		$stmt->bindParam(":id_mensagem", $id_mensagem);
+
+		$stmt->execute();
+
+		$visualizado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+		if ($visualizado[0]['visualizado'] == '1') 
+			return false;
+		else {
+			$stmt = $conn->prepare("UPDATE Mensagem SET visualizado = 1 WHERE id_mensagem = :id_mensagem");
+			$stmt->bindParam(":id_mensagem", $id_mensagem);
+
+			$stmt->execute();
+		}
 	}
 
 

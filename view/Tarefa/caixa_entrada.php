@@ -33,7 +33,7 @@ $tarefas = $tarefacontroller->listAll();
             <div class="col-lg-8">
                 <div class="panel">
                     <div class="panel-heding">
-                        Caixa de Entrada
+                       <h3> Caixa de Entrada </h3>
                     </div>
                     <div class="panel-body">
 

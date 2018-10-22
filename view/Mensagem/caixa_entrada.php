@@ -35,7 +35,7 @@ $msgs = $mensagemcontroller->listAll();
             <div class="col-lg-8">
                 <div class="panel">
                     <div class="panel-heding">
-                        Caixa de Entrada
+                       <h3> Caixa de Entrada </h3>
                     </div>
                     <div class="panel-body">
 
@@ -53,8 +53,12 @@ $msgs = $mensagemcontroller->listAll();
                                 $nome_remetente = $mensagemcontroller->returnNomeById($value['id_funcionario_remetente']);
                                 $id_mensagem = $value['id_mensagem'];
                                 $data = $value['data'];
-                                echo "<tr><td> ". $nome_remetente . " </td> <td> <a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>" . $value['assunto'] ." </a><br></td><td>$data</td> </th>";
-                               
+                                if ($value['visualizado'] == 0) {
+                                    echo "<tr bgcolor='#b2e8b2'><td> ". $nome_remetente . " </td> <td> <a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>" . $value['assunto'] ." </a><br></td><td>$data</td> </th>";
+                               }
+                               else if ($value['visualizado'] == 1) {
+                                     echo "<tr><td> ". $nome_remetente . " </td> <td> <a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>" . $value['assunto'] ." </a><br></td><td>$data</td> </th>";
+                               }
                             }   
                         ?>
                     </div>
