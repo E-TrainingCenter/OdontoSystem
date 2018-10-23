@@ -28,6 +28,8 @@ class MensagemController {
 			$this->EnviaMensagem($mensagem, $id_funcionario_remetente, $value['id_funcionario'], $assunto);
 		}		
 
+		header("Location: /OdontoSystem/view/Mensagem/caixa_entrada.php");
+
 	}
 
 	public function listAll() {
@@ -58,8 +60,7 @@ class MensagemController {
 	}
 
 	public function returnNomeById($id_funcionario) {
-
-		$nome = Mensagem::returnNomeById($id_funcionario);
+				$nome = Mensagem::returnNomeById($id_funcionario);
 
 		return $nome;
 	}
@@ -96,6 +97,14 @@ class MensagemController {
 		$id_funcionario = $funcionario->returnIdByNome($nome);
 		
 		return $id_funcionario;
+	}
+
+	public function excluir($id_mensagem) {
+		$mensagem = new Mensagem();
+
+		$mensagem->excluir($id_mensagem);
+
+		header("Location: /OdontoSystem/view/Mensagem/caixa_entrada.php");
 	}
 
 	

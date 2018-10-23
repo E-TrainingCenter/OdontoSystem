@@ -10,6 +10,8 @@ if (isset($_GET['id'])) {
 	$msg = $mensagemcontroller->GetMensagemById($id_mensagem);
 
 	$nome = $mensagemcontroller->returnNomeById($msg['id_funcionario_remetente']);
+
+	$id_mensagem = $msg['id_mensagem'];
 }
 
 ?>
@@ -24,14 +26,17 @@ if (isset($_GET['id'])) {
 		</div>
 
 		<div class="row">
-			Assunto: <input type="text" value=<?=$msg['assunto']?> class="form-control">
+			Assunto: <input type="text" value=<?=$msg['assunto']?> readonly="true" class="form-control">
 		</div>
 		<br>
 		<div class="row">
 			<textarea class="form-control"> <?=$msg['mensagem']?> </textarea>
 		</div>
 		<br>
-		<button class="btn btn-primary btn-lg botao">Responder</button>
+		<?php 
+			
+			echo "<a href='/OdontoSystem/view/Mensagem/nova_mensagem.php?id_mensagem_resposta=$id_mensagem'><button class='btn btn-primary btn-lg botao'>Responder</button></a>"; 
+		?>
 		<button class="btn btn-default btn-lg botao"><a href="/OdontoSystem/view/Mensagem/caixa_entrada.php">Voltar</a></button>	</div>
 
 </body>
