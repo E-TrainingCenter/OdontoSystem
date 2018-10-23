@@ -43,16 +43,18 @@ if (isset($_GET['id_mensagem_resposta'])) {
 
 <body>
 
-<h2>Enviar Mensagem</h2>
+<h2 class= "title">Enviar Mensagem</h2>
 
 <div class="container">
 
 	<form method="POST">
 		<div class="form-group">
 			<div class="row">
+
 				Para Funcionario: 
 				<select class="form-control" name="destinatario">	
 					
+
 					<?php  
 					if (isset($funcionario)) {
 						echo "<option value=$funcionario> ". $funcionario ." </option>";
@@ -69,8 +71,8 @@ if (isset($_GET['id_mensagem_resposta'])) {
 
 				</select>
 
-				Para Grupo de Funcionarios:
-				 <select class="form-control" name="destinatario-grupo">	
+				<h3>Para Grupo de Funcionarios:</h3>
+				 <select class="form-control" name="destinatario-grupo" >	
 					<option>---</option>
 					<?php  
 
@@ -86,22 +88,27 @@ if (isset($_GET['id_mensagem_resposta'])) {
 			</div>
 
 			<div class="row">
+
 				Assunto:
 				<?php
 					if (isset($assunto) && $assunto = $msg['assunto']) {
-						echo "<input value=$assunto type='text' name='assunto' class='form-control'>";		
+						echo "<input value=$assunto type='text' name='assunto' class='form-control' required>";		
 					}
 					else 
 						echo "<input type='text' name='assunto' class='form-control'>";
 				?>
-				
+
 			</div>
 			<br>
 			<div class="row">
-				<textarea name="mensagem" class="form-control"></textarea>
+				<h3>Mensagem:</h3>
+				<textarea name="mensagem" class="form-control" required></textarea>
 			</div>
 			<br>
-			<button type="submit" class="btn btn-primary btn-lg botao">Enviar</button>
+			<div>
+				<button type="submit" class="btn btn-primary btn-lg botao" style="width: 20vh">Enviar</button>
+				<a href="/OdontoSystem/view/Mensagem/caixa_entrada.php"><h4> Voltar </h4></a>
+		    </div>
 		</div>
 	</form>
 </div>

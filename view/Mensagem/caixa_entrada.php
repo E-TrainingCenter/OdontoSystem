@@ -15,24 +15,21 @@ if (isset($_GET['id_excluir'])) {
 }
 
 ?>
-
 <body>
-
+  
+    
+  
     <div class="container">
 
         <div class="row">
             <div class="col-lg-3">
-                <div class="panel-body">
-                <h4>Mensagens</h4>
+                <div class="panel-body backgroundMenuSide">
                     <p>
-                        <a href="/OdontoSystem/view/Mensagem/nova_mensagem.php" class="btn btn-primary btn-lg botao">Nova Mensagem</button><br>
-                        <a href="/OdontoSystem/view/Mensagem/caixa_entrada.php" class="btn btn-primary btn-lg botao">Caixa de Entrada</button><br>
-                        <a href="/OdontoSystem/view/Mensagem/mensagens_enviadas.php" class="btn btn-primary btn-lg botao">Mensagens Enviadas</button><br>
-                        <a href="/OdontoSystem/view/Mensagem/mensagens_excluidas.php" class="btn btn-primary btn-lg botao">Excluídas</button><br>
-                        <a href="#" class="btn btn-primary btn-lg botao">Excluir</a><br>
-                        <br>
-                        <br>
-                    </p>
+                        <a href="/OdontoSystem/view/Mensagem/nova_mensagem.php" class="btn btn-primary btn-lg botao menuSide">Nova Mensagem</a><br>
+                        <a href="/OdontoSystem/view/Mensagem/caixa_entrada.php" class="btn btn-primary btn-lg botao menuSide">Caixa de Entrada</a><br>
+                        <a href="/OdontoSystem/view/Mensagem/mensagens_enviadas.php" class="btn btn-primary btn-lg botao menuSide">Mensagens Enviadas</a><br>
+                        <a href="/OdontoSystem/view/Mensagem/mensagens_excluidas.php" class="btn btn-primary btn-lg botao menuSide">Excluídas</a>
+                     </p>
                 </div>
             </div>    
         
@@ -41,7 +38,7 @@ if (isset($_GET['id_excluir'])) {
             <div class="col-lg-8">
                 <div class="panel">
                     <div class="panel-heding">
-                       <h3> Caixa de Entrada </h3>
+                       <h3 class="title"> Caixa de Entrada </h3>
                     </div>
                     <div class="panel-body">
 
