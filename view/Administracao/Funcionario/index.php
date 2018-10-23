@@ -69,7 +69,7 @@ if (isset($_GET['id_ativar'])) {
 										echo "<td>". $value['nome']. "</td>";	
 
 										echo "<td> <a href='/OdontoSystem/view/Administracao/Funcionario/index.php?id_inativar=$id_funcionario'>Inativar</a> </td>";
-										echo "<td> <a href='#inativar'>Editar</a> </td>";
+										echo "<td> <a href='/OdontoSystem/view/Administracao/Funcionario/editar.php?id_editar=$id_funcionario'>Editar</a> </td>";
 										echo "</tr>";
 									}
 									

@@ -61,7 +61,22 @@ class FuncionarioController {
 		header("Location: /OdontoSystem/view/Administracao/Funcionario/index.php");
 	}
 
+	public function GetFuncionarioById($id_funcionario) {
+
+		$funcionario = new Funcionario();
+
+		$results = $funcionario->GetFuncionarioById($id_funcionario);
+
+		return $results;	
+	}
 	
+	public function editar($id_funcionario, $nome, $cpf, $endereco, $id_cargo, $sexo, $senha) {
+		$funcionario = new Funcionario();
+
+		$funcionario->editar($id_funcionario, $nome, $cpf, $endereco, $id_cargo['id_cargo'], $sexo, $senha, 1); 
+
+		header("Location: /OdontoSystem/view/Administracao/Funcionario/index.php");
+	}
 
 }
 

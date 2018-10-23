@@ -50,7 +50,7 @@ class Cargo{
 
 		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
        
-		return $results;
+		return $results[0];
 
     }
     
@@ -64,6 +64,19 @@ class Cargo{
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
+    }
+
+    public function GetId_cargoByDescricao($cargo_descricao) {
+        $conn = Banco::connect();
+
+        $stmt = $conn->prepare("SELECT * FROM Cargo WHERE cargo = :cargo_descricao");
+        $stmt->bindParam(":cargo_descricao", $cargo_descricao);
+        
+        $stmt->execute();
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results[0];
     }
 
     

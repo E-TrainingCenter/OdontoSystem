@@ -174,6 +174,40 @@ class Funcionario {
 			return false;
 	}
 
+	public function GetFuncionarioById($id_funcionario) {
+
+		$conn = Banco::connect(); 
+
+		$stmt = $conn->prepare("SELECT * FROM Funcionario WHERE id_funcionario = :id_funcionario");
+		$stmt->bindParam(":id_funcionario", $id_funcionario);
+
+		$stmt->execute();
+
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+		return $results[0];
+
+	}
+
+	public function editar($id_funcionario, $nome, $cpf, $endereco, $id_cargo, $sexo, $senha, $ativo) {
+
+		$conn = Banco::connect(); 
+
+		$stmt = $conn->prepare("UPDATE Funcionario SET nome = :nome , cpf = :cpf , endereco = :endereco , id_cargo = :id_cargo , sexo = :sexo , senha = :senha , ativo = :ativo WHERE id_funcionario = :id_funcionario");
+		$stmt->bindParam(":nome", $nome);
+		$stmt->bindParam(":cpf", $cpf);
+		$stmt->bindParam(":endereco", $endereco);
+		$stmt->bindParam(":id_cargo", $id_cargo);
+		$stmt->bindParam(":sexo", $sexo);
+		$stmt->bindParam(":senha", $senha);
+		$stmt->bindParam(":ativo", $ativo);
+		$stmt->bindParam(":id_funcionario", $id_funcionario);
+
+		$stmt->execute();
+
+
+	}
+
 
 
 }
