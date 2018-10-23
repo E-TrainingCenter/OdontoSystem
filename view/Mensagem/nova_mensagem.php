@@ -33,15 +33,15 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario-grupo']) && isset($_
 
 <body>
 
-<h2>Enviar Mensagem</h2>
+<h2 class= "title">Enviar Mensagem</h2>
 
 <div class="container">
 
 	<form method="POST">
 		<div class="form-group">
 			<div class="row">
-				Para Funcionario: 
-				<select class="form-control" name="destinatario">	
+				<h3>Para Funcionario: </h3>
+				<select class="form-control" name="destinatario" >	
 					<option>---</option>
 					<?php  
 
@@ -54,8 +54,8 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario-grupo']) && isset($_
 
 				</select>
 
-				Para Grupo de Funcionarios:
-				 <select class="form-control" name="destinatario-grupo">	
+				<h3>Para Grupo de Funcionarios:</h3>
+				 <select class="form-control" name="destinatario-grupo" >	
 					<option>---</option>
 					<?php  
 
@@ -71,15 +71,19 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario-grupo']) && isset($_
 			</div>
 
 			<div class="row">
-				Assunto:
-				<input type="text" name="assunto" class="form-control">
+				<h3>Assunto:</h3>
+				<input type="text" name="assunto" class="form-control" required>
 			</div>
 			<br>
 			<div class="row">
-				<textarea name="mensagem" class="form-control"></textarea>
+				<h3>Mensagem:</h3>
+				<textarea name="mensagem" class="form-control" required></textarea>
 			</div>
 			<br>
-			<button type="submit" class="btn btn-primary btn-lg botao">Enviar</button>
+			<div>
+				<button type="submit" class="btn btn-primary btn-lg botao" style="width: 20vh">Enviar</button>
+				<a href="/OdontoSystem/view/Mensagem/caixa_entrada.php"><h4> Voltar </h4></a>
+		    </div>
 		</div>
 	</form>
 </div>

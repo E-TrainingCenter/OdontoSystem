@@ -13,16 +13,13 @@ $msgs = $mensagemcontroller->listEnviadas();
 
         <div class="row">
             <div class="col-lg-3">
-                <div class="panel-body">
-                <h4>Mensagens Enviadas</h4>
+                <div class="panel-body backgroundMenuSide">
+           
                     <p>
-                        <a href="/OdontoSystem/view/Mensagem/nova_mensagem.php" class="btn btn-primary btn-lg botao">Nova Mensagem</button><br>
-                        <a href="/OdontoSystem/view/Mensagem/caixa_entrada.php" class="btn btn-primary btn-lg botao">Caixa de Entrada</button><br>
-                        <a href="/OdontoSystem/view/Mensagem/mensagens_enviadas.php" class="btn btn-primary btn-lg botao">Mensagens Enviadas</button><br>
-                        <a href="/OdontoSystem/view/Mensagem/mensagens_excluidas.php" class="btn btn-primary btn-lg botao">Excluídas</button><br>
-                        <a href="#" class="btn btn-primary btn-lg botao">Excluir</a><br>
-                        <br>
-                        <br>
+                        <a href="/OdontoSystem/view/Mensagem/nova_mensagem.php" class="btn btn-primary btn-lg botao menuSide">Nova Mensagem</a><br>
+                        <a href="/OdontoSystem/view/Mensagem/caixa_entrada.php" class="btn btn-primary btn-lg botao menuSide">Caixa de Entrada</a><br>
+                        <a href="/OdontoSystem/view/Mensagem/mensagens_enviadas.php" class="btn btn-primary btn-lg botao menuSide">Mensagens Enviadas</a><br>
+                        <a href="/OdontoSystem/view/Mensagem/mensagens_excluidas.php" class="btn btn-primary btn-lg botao menuSide">Excluídas</a><br>
                     </p>
                 </div>
             </div>    
@@ -31,10 +28,17 @@ $msgs = $mensagemcontroller->listEnviadas();
         
             <div class="col-lg-8">
                 <div class="panel">
-                    <div class="panel-heding">
+                    <div class="panel-heding title">
                         Mensagens Enviadas
                     </div>
                     <div class="panel-body">
+                        <table style="width:100%">
+                          <tr>
+                          <th> Remetente </th>
+                          <th> Assunto </th>
+                          <th> Status </th>
+                          
+                          </tr>
 
                         <?php 
 
@@ -48,7 +52,7 @@ $msgs = $mensagemcontroller->listEnviadas();
                                 else
                                     $visualizado = 'Visualizado';
 
-                                echo "<a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'> ". $nome_remetente . " || " . $value['assunto'] ." || ". $visualizado . "</a><br>";
+                                echo "<tr><td><a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>". $nome_remetente . "</a></td> <td><a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>" . $value['assunto'] ."</a></td> <td><a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>". $visualizado . "</a></td> </tr>";
                                
                             }   
                         ?>

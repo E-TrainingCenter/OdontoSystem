@@ -16,23 +16,24 @@ if (isset($_GET['id'])) {
 
 
 <body>
-	<h2>Mensagem</h2>
+	<h2><center>Mensagem</center></h2>
 	
 	<div class="container">
 		<div class="row">
-			De: <input type="text" value=<?=$nome?> class="form-control">
+			<h3>De: </h3><input type="text" readonly="true" value=<?=$nome?> class="form-control">
 		</div>
 
 		<div class="row">
-			Assunto: <input type="text" value=<?=$msg['assunto']?> class="form-control">
+			<h3>Assunto:</h3> <input type="text" readonly="true" value=<?=$msg['assunto']?> class="form-control">
 		</div>
 		<br>
 		<div class="row">
-			<textarea class="form-control"> <?=$msg['mensagem']?> </textarea>
+			<textarea class="form-control" readonly="true"> <?=$msg['mensagem']?> </textarea>
 		</div>
 		<br>
-		<button class="btn btn-primary btn-lg botao">Responder</button>
-		<button class="btn btn-default btn-lg botao"><a href="/OdontoSystem/view/Mensagem/caixa_entrada.php">Voltar</a></button>	</div>
+		<button class="btn btn-primary btn-lg botao" style="width: 20vh;">Responder</button>
+		<a href="/OdontoSystem/view/Mensagem/caixa_entrada.php"><h4>Voltar</h4></a>
+	</div>
 
 </body>
 <?php

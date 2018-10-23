@@ -6,8 +6,8 @@
 <link href="/OdontoSystem/resources/css/layoutcss.css" rel="stylesheet">
 <body>
 
-	<div style = "width: 100vw; padding: 1vh 5vw 0vw 5vw">
-		<table class="table1"> 
+	<div style = "width: 100vw;padding: 1vh 5vw 0vw 5vw">
+		<table class="table1" > 
 			<tr> 
 				<th class = "table1th">
 					Mensagens
