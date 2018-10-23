@@ -29,6 +29,16 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario-grupo']) && isset($_
 	$mensagemcontroller->EnviaMensagemGrupo($mensagem, $id_funcionario_remetente, $id_grupo_destinatario, $assunto);
 }
 
+if (isset($_GET['id_mensagem_resposta'])) {
+
+	$msg = $mensagemcontroller->GetMensagemById($_GET['id_mensagem_resposta']);
+
+	$funcionario = $mensagemcontroller->returnNomeById($msg['id_funcionario_remetente']);
+
+	$assunto = $msg['assunto'];
+
+}
+
 ?>
 
 <body>
@@ -40,15 +50,22 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario-grupo']) && isset($_
 	<form method="POST">
 		<div class="form-group">
 			<div class="row">
-				<h3>Para Funcionario: </h3>
-				<select class="form-control" name="destinatario" >	
-					<option>---</option>
-					<?php  
 
-					foreach ($funcionarios as $key => $value) {
+				Para Funcionario: 
+				<select class="form-control" name="destinatario">	
+					
+
+					<?php  
+					if (isset($funcionario)) {
+						echo "<option value=$funcionario> ". $funcionario ." </option>";
+					}
+					else {
+						echo "<option>---</option>";
+						foreach ($funcionarios as $key => $value) {
 							$nome = $value['nome'];
 							echo "<option value=$nome> ". $nome ." </option>";
-						}	
+						}
+					}	
 
 					?>
 
@@ -71,8 +88,16 @@ if (isset($_POST['mensagem']) && isset($_POST['destinatario-grupo']) && isset($_
 			</div>
 
 			<div class="row">
-				<h3>Assunto:</h3>
-				<input type="text" name="assunto" class="form-control" required>
+
+				Assunto:
+				<?php
+					if (isset($assunto) && $assunto = $msg['assunto']) {
+						echo "<input value=$assunto type='text' name='assunto' class='form-control' required>";		
+					}
+					else 
+						echo "<input type='text' name='assunto' class='form-control'>";
+				?>
+
 			</div>
 			<br>
 			<div class="row">

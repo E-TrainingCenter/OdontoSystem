@@ -173,7 +173,7 @@ class Mensagem {
 		$stmt->execute();
 
 		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+		
 		return $results[0]['nome'];
 	}
 
@@ -211,6 +211,7 @@ class Mensagem {
 			$stmt->execute();
 		}
 	}
+
 
 
 }

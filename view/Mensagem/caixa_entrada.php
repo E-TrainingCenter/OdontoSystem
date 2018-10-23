@@ -7,6 +7,12 @@ $mensagemcontroller = new MensagemController();
 
 $msgs = $mensagemcontroller->listAll();
 
+if (isset($_GET['id_excluir'])) {
+
+  $mensagemcontroller = new MensagemController();
+  $mensagemcontroller->excluir($_GET['id_excluir']);
+
+}
 
 ?>
 <body>
@@ -42,6 +48,7 @@ $msgs = $mensagemcontroller->listAll();
                           <th> Remetente </th>
                           <th> Assunto </th>
                           <th> Data </th>
+                          <th> Excluir </th>
                           </tr>
                         <?php 
 
@@ -51,10 +58,10 @@ $msgs = $mensagemcontroller->listAll();
                                 $id_mensagem = $value['id_mensagem'];
                                 $data = $value['data'];
                                 if ($value['visualizado'] == 0) {
-                                    echo "<tr bgcolor='#b2e8b2'><td> ". $nome_remetente . " </td> <td> <a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>" . $value['assunto'] ." </a><br></td><td>$data</td> </th>";
+                                    echo "<tr bgcolor='#b2e8b2'><td> ". $nome_remetente . " </td> <td> <a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>" . $value['assunto'] ." </a><br></td><td>$data</td> <td><a href='/OdontoSystem/view/Mensagem/caixa_entrada.php?id_excluir=$id_mensagem'>Excluir</a> </td> </th>";
                                }
                                else if ($value['visualizado'] == 1) {
-                                     echo "<tr><td> ". $nome_remetente . " </td> <td> <a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>" . $value['assunto'] ." </a><br></td><td>$data</td> </th>";
+                                     echo "<tr><td> ". $nome_remetente . " </td> <td> <a href='/OdontoSystem/view/Mensagem/visualizar_mensagem.php?id=$id_mensagem'>" . $value['assunto'] ." </a><br></td><td>$data</td> <td><a href='/OdontoSystem/view/Mensagem/caixa_entrada.php?id_excluir=$id_mensagem'>Excluir</a> </td>  </th>";
                                }
                             }   
                         ?>
