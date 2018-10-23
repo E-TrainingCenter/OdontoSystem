@@ -21,15 +21,15 @@ if (isset($_POST['tarefa']) && isset($_POST['destinatario']) && isset($_POST['as
 
 <body>
 
-<h2>Enviar Tarefa</h2>
+<h2 class="title">Enviar Tarefa</h2>
 
 <div class="container">
 
 	<form method="POST">
 		<div class="form-group">
 			<div class="row">
-				Para: 
-				<select class="form-control" name="destinatario">	
+			<h3>Para:</h3> 
+				<select required class="form-control" name="destinatario">	
 					<option>---</option>
 					<?php  
 
@@ -42,19 +42,31 @@ if (isset($_POST['tarefa']) && isset($_POST['destinatario']) && isset($_POST['as
 
 				</select>
 			</div>
+			<br>
 
 			<div class="row">
-				Assunto:
-				<input type="text" name="assunto" class="form-control">
+				<h3>Assunto:</h3>
+				<input required  type="text" name="assunto" class="form-control">
 			</div>
 			<br>
-			<div class="row">
-				<textarea name="tarefa" class="form-control"></textarea>
-			</div>
-			Prazo: <input type="date" name="data_fim" class="form-control">
 
+			<div class="row">
+				<h3>Tarefa:</h3>
+				<textarea required name="tarefa" class="form-control"></textarea>
+			</div>
 			<br>
-			<button type="submit" class="btn btn-primary btn-lg botao">Enviar</button>
+
+			<div class="row">
+
+				<h3>Prazo:</h3>
+				<input required type="date" name="data_fim" class="form-control">
+			</div>	
+			<br>
+
+			<div class="row">
+				<button type="submit" class="btn btn-primary btn-lg botao" style="width: 20vh;">Enviar</button>
+				<a href="/OdontoSystem/view/Tarefa/caixa_entrada.php" style="margin-left: 20px;"> <h4>Voltar</h4> </a>
+			</div>
 		</div>
 	</form>
 </div>

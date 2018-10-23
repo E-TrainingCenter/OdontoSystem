@@ -105,9 +105,9 @@ if (isset($_GET['id_mensagem_resposta'])) {
 				<textarea name="mensagem" class="form-control" required></textarea>
 			</div>
 			<br>
-			<div>
+			<div class = "row">
 				<button type="submit" class="btn btn-primary btn-lg botao" style="width: 20vh">Enviar</button>
-				<a href="/OdontoSystem/view/Mensagem/caixa_entrada.php"><h4> Voltar </h4></a>
+				<a href="/OdontoSystem/view/Mensagem/caixa_entrada.php" style = "margin-left: 20px;"><h4> Voltar </h4></a>
 		    </div>
 		</div>
 	</form>
