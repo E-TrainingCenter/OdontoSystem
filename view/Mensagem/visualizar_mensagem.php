@@ -32,18 +32,22 @@ if (isset($_GET['id'])) {
 		</div>
 		<br>
 		<div class="row">
+			<h3> Mensagem </h3>
 			<textarea class="form-control" readonly="true"> <?=$msg['mensagem']?> </textarea>
 		</div>
 		<br>
 
-
-	</div>
-
+		<div class="row">
 		<?php 
 			
-			echo "<a href='/OdontoSystem/view/Mensagem/nova_mensagem.php?id_mensagem_resposta=$id_mensagem'><button class='btn btn-primary btn-lg botao'>Responder</button></a>"; 
+			echo "<a href='/OdontoSystem/view/Mensagem/nova_mensagem.php?id_mensagem_resposta=$id_mensagem'><button class='btn btn-primary btn-lg botao' style = 'width: 20vh;'>Responder</button></a>"; 
 		?>
-		<button class="btn btn-default btn-lg botao"><a href="/OdontoSystem/view/Mensagem/caixa_entrada.php">Voltar</a></button>	</div>
+		<a href="/OdontoSystem/view/Mensagem/caixa_entrada.php" style="margin-left: 20px;"><h4>Voltar</h4></a>
+
+	</div>
+	</div>
+
+	
 
 </body>
 <?php
