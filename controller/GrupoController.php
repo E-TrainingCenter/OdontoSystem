@@ -18,6 +18,14 @@ class GrupoController{
 	   	return $grupos;
    }
 
+    public function listInativos(){
+      $grupo = new Grupo();
+
+      $results = $grupo->listInativos();
+
+      return $results;
+  }
+
    public function inativar($id_grupo) {
    		$grupo = new Grupo();
 
@@ -26,6 +34,16 @@ class GrupoController{
    		header("Location: /OdontoSystem/view/Administracao/Grupo/index.php");
 
    }
+
+
+  public function ativar($id_grupo) {
+    $grupo = new Grupo();
+
+    $grupo->ativar($id_grupo);
+
+    header("Location: /OdontoSystem/view/Administracao/Grupo/index.php");
+  }
+
 
    public function funcionariosDisponiveis($id_grupo) {
 

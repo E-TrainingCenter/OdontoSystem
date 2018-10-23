@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 21-Out-2018 às 17:14
+-- Generation Time: 23-Out-2018 às 13:21
 -- Versão do servidor: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -49,7 +49,9 @@ CREATE TABLE `cargo` (
 --
 
 INSERT INTO `cargo` (`id_cargo`, `cargo`, `salario`) VALUES
-(1, 'Gerente', 1000);
+(1, 'Gerente', 1000),
+(2, 'Administracao', 1500),
+(3, 'RH', 2010);
 
 -- --------------------------------------------------------
 
@@ -73,12 +75,8 @@ CREATE TABLE `funcionario` (
 --
 
 INSERT INTO `funcionario` (`id_funcionario`, `nome`, `cpf`, `endereco`, `id_cargo`, `sexo`, `senha`, `ativo`) VALUES
-(3, 'leo', '1545454545', 'mumbaba', 1, 'masculino', '123', 1),
-(4, 'jerry', '15453', 'sb', 1, 'indefinido', '123', 1),
-(5, 'george', '20202202', 'sobral', 1, 'Feminino', '123', 1),
-(6, 'fulano de tal', '666156646515666', 'putaquepariu', 1, 'Masculino', '123', 1),
-(9, 'jaiane', '666156646515666', 'mumbaba', 1, 'Feminino', '123', 1),
-(10, 'maria', '55615556', 'acre', 1, 'Feminino', '123', 1);
+(14, 'leonardo', '25252525', 'massape', 3, 'Feminino', '123', 1),
+(15, 'jerry', '06812184848', 'sao', 2, 'Masculino', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -97,8 +95,8 @@ CREATE TABLE `funcionario_grupo` (
 --
 
 INSERT INTO `funcionario_grupo` (`id_funcionario_Grupo`, `id_funcionario`, `id_grupo`) VALUES
-(20, 3, 1),
-(21, 6, 1);
+(1, 14, 1),
+(2, 15, 2);
 
 -- --------------------------------------------------------
 
@@ -121,8 +119,10 @@ INSERT INTO `grupo` (`id_grupo`, `descricao`, `ativo`) VALUES
 (2, 'Suporte', 1),
 (3, 'Implantacao', 1),
 (4, 'Financeiro', 1),
-(5, 'Odontologos', 1),
-(6, 'teste', 1);
+(5, 'Odontologos', 0),
+(6, 'teste', 0),
+(7, 'GRUPO ODO THALES', 0),
+(8, 'NOVO GRUPO DO THALES', 0);
 
 -- --------------------------------------------------------
 
@@ -146,13 +146,8 @@ CREATE TABLE `mensagem` (
 --
 
 INSERT INTO `mensagem` (`id_mensagem`, `mensagem`, `data`, `id_funcionario_remetente`, `id_funcionario_destinatario`, `excluido`, `assunto`, `visualizado`) VALUES
-(1, 'Va fazer o cafe va', '2018-10-02', 3, 4, 0, 'bom dia', 0),
-(2, 'como ce ta?', '2018-10-01', 4, 3, 0, 'eai', 0),
-(3, 'vai trabalhar', '2018-10-01', 3, 3, 0, 'work', 0),
-(4, 'msg excluida', '2018-10-01', 3, 4, 1, 'excluida', 1),
-(5, 'teste das msgs excluidas', '2018-10-02', 4, 3, 1, 'teste', 0),
-(6, 'vai ter prova sim', '2018-10-17', 3, 4, 0, 'prova', 0),
-(7, 'essa aqui Ã© a mensagem loketa de teste\r\n', '2018-10-17', 3, 3, 0, 'teste de novo', 0);
+(1, 'Segue em anexo os arquivos, cara. Me confirma', '2018-10-23', 15, 14, 0, 'Arquivos', 1),
+(2, 'Recebi sim, obrigado', '2018-10-23', 14, 15, 1, 'Arquivos', 1);
 
 -- --------------------------------------------------------
 
@@ -223,20 +218,6 @@ CREATE TABLE `tarefa` (
   `assunto` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `tarefa`
---
-
-INSERT INTO `tarefa` (`id_tarefa`, `descricao`, `data_inicio`, `data_fim`, `id_funcionario_remetente`, `id_funcionario_destinatario`, `status`, `excluido`, `assunto`) VALUES
-(1, 'fazer os relatorios', '01/01/2001', '02/02/2002', 3, 4, 'a fazer', '0', 'relatorios'),
-(2, 'limpar os banheiros', '02/02/2002', '03/03/2003', 4, 3, 'fazendo', '0', 'limpeza'),
-(3, 'tarefa de teste', '10/12/2008', '09/03/2009', 4, 3, 'a fazer', '0', 'teste'),
-(4, 'quero que vc faca tudo pra mim', '01/01/2001', '02/02/2008', 3, 4, 'fazendo', '0', 'teste'),
-(5, 'segue em anexo ', '2018-10-18 23:3', '2018-10-02', 4, 4, 'A fazer', '0', 'fulano faz aquilo'),
-(6, 'tira uma copia da tua chave', '2018-10-18 23:3', '2018-10-04', 3, 3, 'A fazer', '0', 'Ola, miga'),
-(7, 'vai ter prova do lider ', '2018-10-18 23:4', '2018-09-25', 3, 3, 'A fazer', '0', 'prova'),
-(8, 'taqui tua passagem', '2018-10-18 23:4', '2005-05-01', 3, 9, 'A fazer', '0', 'viajem');
-
 -- --------------------------------------------------------
 
 --
@@ -276,9 +257,8 @@ CREATE TABLE `treinamento_funcionario` (
 --
 
 INSERT INTO `treinamento_funcionario` (`id_treinamento_funcionario`, `id_treinamento`, `id_funcionario`) VALUES
-(7, 1, 6),
-(8, 2, 6),
-(9, 2, 5);
+(1, 1, 14),
+(2, 2, 15);
 
 --
 -- Indexes for dumped tables
@@ -384,27 +364,27 @@ ALTER TABLE `treinamento_funcionario`
 -- AUTO_INCREMENT for table `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `id_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `funcionario_grupo`
 --
 ALTER TABLE `funcionario_grupo`
-  MODIFY `id_funcionario_Grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_funcionario_Grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `mensagem`
 --
 ALTER TABLE `mensagem`
-  MODIFY `id_mensagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_mensagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `prova`
 --
@@ -419,7 +399,7 @@ ALTER TABLE `questao`
 -- AUTO_INCREMENT for table `tarefa`
 --
 ALTER TABLE `tarefa`
-  MODIFY `id_tarefa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_tarefa` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `treinamento`
 --
@@ -429,7 +409,7 @@ ALTER TABLE `treinamento`
 -- AUTO_INCREMENT for table `treinamento_funcionario`
 --
 ALTER TABLE `treinamento_funcionario`
-  MODIFY `id_treinamento_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_treinamento_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --

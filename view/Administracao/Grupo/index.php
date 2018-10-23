@@ -6,12 +6,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/OdontoSystem/controller/GrupoControll
 $grupocontroller = new GrupoController();
 
 $grupos = $grupocontroller->listAll();
+$grupos_inativos = $grupocontroller->listInativos();
 
 if (isset($_GET['id_inativar'])) {
 
 	$id_grupo = $_GET['id_inativar'];
 
 	$grupocontroller->inativar($id_grupo);
+}
+
+
+if (isset($_GET['id_ativar'])) {
+
+	$id_grupo = $_GET['id_ativar'];
+
+	$grupocontroller->ativar($id_grupo);
 }
 
 
@@ -79,8 +88,54 @@ if (isset($_GET['id_inativar'])) {
 			</div>
 		</div>
 
+
+
+
+<h1>Grupos Inativos</h1>
+		<div class="row">
+			<div class="panel">
+				<div class="panel-body">
+
+					<table class="table"> 
+						<thead>
+							<tr>
+								<th>Grupos</th>
+
+								<th>Ativar</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							
+								<?php
+
+									foreach ($grupos_inativos as $key => $value) {
+										$id_grupo = $value['id_grupo'];
+
+										echo "<tr>";
+										echo "<td>". $value['descricao']. "</td>";	
+
+										echo "<td> <a href='/OdontoSystem/view/Administracao/Grupo/index.php?id_ativar=$id_grupo'>Ativar</a> </td>";
+										
+										echo "</tr>";
+									}
+									
+								
+				
+								?>
+							
+						</tbody>
+					
+					</table>
+
+				</div>
+
+			</div>
+		</div>
+
 	</div>
 
+	</div>
 
 
 </body>
