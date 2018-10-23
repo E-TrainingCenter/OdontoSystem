@@ -30,6 +30,12 @@ if (isset($_GET['id_remove']) && $_GET['id_grupo']) {
     $grupocontroller->removeFuncionario($_GET['id_remove'], $_GET['id_grupo']);
 }
 
+if (isset($_POST['cadastrar'])) {
+    $grupocontroller = new GrupoController();
+
+    $grupocontroller->editar($_GET['id_editar'], $_POST['descricao']);
+}
+
 ?>
 
 <body>
@@ -45,10 +51,9 @@ if (isset($_GET['id_remove']) && $_GET['id_grupo']) {
 		<div class="col-md-5">
 			<form method="POST">
 				<div class="form-group">
-					Nome: <input type="text" class="form-control" name="descricao" value=<?=$grupo['descricao']?>>
-					Ativo <input type="radio" name="ativo" name="1"> Inativo <input type="radio" name="ativo" value="0"><br>
+					Nome: <textarea type="text" class="form-control" name="descricao"> <?php echo $grupo['descricao']; ?> </textarea>
 					
-					<button type="submit" class="btn btn-success">Cadastrar</button> <br> <br>
+					<button type="submit" class="btn btn-success" name="cadastrar" value="cadastrar">Editar</button> <br> <br>
 					<button type="submit" class="btn btn-default"><a  href="/OdontoSystem/view/Administracao/Grupo/index.php" >Voltar</a></button>
 				</div>
 			</form>

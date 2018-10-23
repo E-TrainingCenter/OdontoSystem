@@ -13,17 +13,16 @@ if (isset($_GET['id_editar'])) {
 	$funcionariocontroller = new FuncionarioController();
 	$funcionario = $funcionariocontroller->GetFuncionarioById($_GET['id_editar']);
 
-	$nome = $funcionario['nome'];
+	$nome = $funcionario['nome']; 
 	$cpf = $funcionario['cpf'];
 	$endereco = $funcionario['endereco'];
 	$id_cargo = $funcionario['id_cargo'];
-	$sexo = $funcionario['sexo'];
+	$sexo = $funcionario['sexo']; 
 	$senha = $funcionario['senha'];
 
 	$cargo = new CargoController();
 	$descricao_cargo = $cargo->GetCargo($funcionario['id_cargo']);
 	$descricao_cargo = $descricao_cargo['cargo'];
-
 }
 
 if (isset($_POST['editar'])) {
@@ -32,7 +31,7 @@ if (isset($_POST['editar'])) {
 	$cpf = $_POST['cpf'];
 	$endereco = $_POST['endereco'];
 	$id_cargo = $cargo->GetId_cargoByDescricao($_POST['cargo']); 
-	$sexo = $_POST['sexo'];
+	$sexo = $_POST['sexo']; 
 	$senha = $_POST['senha'];
 	$id_funcionario = $_GET['id_editar'];
 
@@ -55,10 +54,11 @@ if (isset($_POST['editar'])) {
 
 		<form method="POST">
 			<div class="form-group">
-				Nome: <input type="text" value=<?=$nome;?> name="nome" class="form-control">
+				Nome: <textarea type="text" name="nome" class="form-control"> <?php echo $nome;?></textarea>
 				Sexo: 
 				<?php
-					if (($sexo == 'feminino') or ($sexo = 'Feminino')) {
+					if (($sexo == 'feminino') or ($sexo == 'Feminino')) {
+						
 						echo "<br> Masculino <input type='radio' name='sexo' value='Masculino' ><br> Feminino<input type='radio' checked name='sexo' value='Feminino'><br>";
 					}
 					else 

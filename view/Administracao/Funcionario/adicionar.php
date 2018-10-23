@@ -41,10 +41,10 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
 
 		<form method="POST">
 			<div class="form-group">
-				Nome: <input type="text" name="nome" class="form-control">
+				Nome: <input type="text" name="nome" class="form-control" required>
 				Sexo: <br> Masculino <input type="radio" name="sexo" value="Masculino" ><br> Feminino<input type="radio" name="sexo" value="Feminino"><br>
-				CPF: <input type="text" name="cpf" class="form-control">
-				Endereco: <input type="text" name="endereco" class="form-control">
+				CPF: <input type="text" name="cpf" class="form-control" required>
+				Endereco: <input type="text" name="endereco" class="form-control" required>
 				Cargo: 
 				<select class="form-control" name="destinatario">	
 					<option>---</option>
@@ -58,10 +58,10 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
 					?>
 
 				</select>
-				Senha: <input type="password" name="senha" class="form-control"><br>
+				Senha: <input type="password" name="senha" class="form-control" required><br>
 
 				<button type="submit" class="btn btn-success">Cadastrar</button> <br> <br>
-				<button href="/OdontoSystem/view/Administracao/Funcionario/index.php" class="btn btn-default">Voltar</button>
+				<button  class="btn btn-default"><a href="/OdontoSystem/view/Administracao/Funcionario/index.php" >Voltar</a></button>
 			</div>
 		</form>
 	</div>

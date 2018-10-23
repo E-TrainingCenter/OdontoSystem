@@ -148,10 +148,12 @@ class Tarefa {
         return $results;
     }
 
-    public function AtualizaStatus($status, $id_tarefa) {
+    public function atualizaStatus($id_tarefa, $status) {
         $conn = Banco::connect();
 
-        $stmt = $conn->prepare("UPDATE FROM Tarefa SET status = :status WHERE id_tarefa = :id_tarefa");
+        $stmt = $conn->prepare("UPDATE Tarefa SET status = :status WHERE id_tarefa = :id_tarefa");
+        $stmt->bindParam(":status", $status);
+        $stmt->bindParam(":id_tarefa", $id_tarefa);
 
         if ($stmt->execute())
             return true;
