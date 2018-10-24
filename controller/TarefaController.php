@@ -73,5 +73,13 @@ class TarefaController{
 		header("Location: /OdontoSystem/view/Tarefa/caixa_entrada.php");
 	}
 
+	public function finalizar($id_tarefa, $status) {
+
+		$this->atualizaStatus($id_tarefa, $status);
+
+		header("Location: /OdontoSystem/view/Tarefa/tarefas_enviadas.php");	
+	}
+
+
 }
 ?>

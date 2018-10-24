@@ -45,7 +45,7 @@ $tarefas = $tarefacontroller->listAll();
                                 $id_tarefa = $value['id_tarefa'];
                                 $data = $value['data_fim'];
                                 $status = $value['status'];
-                                echo "<tr><th> ". $nome_remetente . " </th><th><a href='/OdontoSystem/view/Tarefa/visualizar_tarefa.php?id=$id_tarefa&funcionario=remetente'>" . $value['assunto'] ." </a></th><td>$status</td><td>$data</td></tr>";
+                                echo "<tr><th> ". $nome_remetente . " </th><th><a href='/OdontoSystem/view/Tarefa/visualizar_tarefa.php?id=$id_tarefa&funcionario=destinatario'>" . $value['assunto'] ." </a></th><td>$status</td><td>$data</td></tr>";
                                
                             }   
                         ?>

@@ -34,7 +34,7 @@ $msgs = $mensagemcontroller->listEnviadas();
                     <div class="panel-body">
                         <table style="width:100%">
                           <tr>
-                          <th> Remetente </th>
+                          <th> Destinatario </th>
                           <th> Assunto </th>
                           <th> Status </th>
                           

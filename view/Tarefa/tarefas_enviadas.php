@@ -46,7 +46,7 @@ $tarefas = $tarefacontroller->listEnviadas();
                                 $nome_remetente = $tarefacontroller->returnNomeById($value['id_funcionario_destinatario']);
                                 $id_tarefa = $value['id_tarefa'];
                                 $status = $value['status'];
-                                echo "<tr> <td><a href='/OdontoSystem/view/Tarefa/visualizar_tarefa.php?id=$id_tarefa'> ". $nome_remetente . " </a></td><td><a href='/OdontoSystem/view/Tarefa/visualizar_tarefa.php?id=$id_tarefa'>" . $value['assunto'] ." </a></td><td>$status</td></tr>";
+                                echo "<tr> <td>". $nome_remetente . "</td><td><a href='/OdontoSystem/view/Tarefa/visualizar_tarefa.php?id=$id_tarefa&funcionario=remetente'>" . $value['assunto'] ." </a></td><td>$status</td></tr>";
                                
                             }   
                         ?>
