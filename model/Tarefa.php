@@ -85,7 +85,7 @@ class Tarefa {
     public function listAll($id_funcionario_destinatario) {
         $conn = Banco::connect();
 
-        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 0 and id_funcionario_destinatario = :id_funcionario_destinatario");
+        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 0 and id_funcionario_destinatario = :id_funcionario_destinatario ORDER BY data_fim DESC");
         $stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
 
         $stmt->execute();
@@ -138,7 +138,7 @@ class Tarefa {
 
         $conn = Banco::connect();
 
-        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 0 and id_funcionario_remetente = :id_funcionario_remetente");
+        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 0 and id_funcionario_remetente = :id_funcionario_remetente ORDER BY data_fim DESC");
         $stmt->bindParam(":id_funcionario_remetente", $id_funcionario_remetente);
 
         $stmt->execute();
@@ -148,10 +148,12 @@ class Tarefa {
         return $results;
     }
 
-    public function AtualizaStatus($status, $id_tarefa) {
+    public function atualizaStatus($id_tarefa, $status) {
         $conn = Banco::connect();
 
-        $stmt = $conn->prepare("UPDATE FROM Tarefa SET status = :status WHERE id_tarefa = :id_tarefa");
+        $stmt = $conn->prepare("UPDATE Tarefa SET status = :status WHERE id_tarefa = :id_tarefa");
+        $stmt->bindParam(":status", $status);
+        $stmt->bindParam(":id_tarefa", $id_tarefa);
 
         if ($stmt->execute())
             return true;

@@ -7,6 +7,8 @@ class GrupoController{
     public function CadastrarGrupo($descricao){
         $grupo = new Grupo();
         $grupo->Add($descricao, 1);
+
+        header("Location: /OdontoSystem/view/Administracao/Grupo/index.php");
     }
 
    public function listAll() {
@@ -63,10 +65,10 @@ class GrupoController{
     return $results;
   }
 
-   public function editar($id_grupo) {
+   public function editar($id_grupo, $descricao) {
       $grupo = new Grupo();
 
-      $grupo->editar($id_grupo);
+      $grupo->editar($id_grupo, $descricao);
 
       header("Location: /OdontoSystem/view/Administracao/Grupo/index.php");
 

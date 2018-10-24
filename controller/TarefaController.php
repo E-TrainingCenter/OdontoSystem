@@ -44,7 +44,7 @@ class TarefaController{
 	}
 
 	public function EnviaTarefa($descricao, $data_fim, $id_funcionario_remetente, $id_funcionario_destinatario, $assunto) {
-		//echo "$descricao - $data_fim - $id_funcionario_remetente - $id_funcionario_destinatario - $assunto"; exit;
+	
 		$tarefa = new Tarefa();
 
 		date_default_timezone_set('America/Sao_Paulo');
@@ -63,6 +63,23 @@ class TarefaController{
 		
 		return $tarefa;
 	}
+
+	public function atualizaStatus($id_tarefa, $status) {
+
+		$tarefa = new Tarefa();
+
+		$tarefa->atualizaStatus($id_tarefa, $status);
+
+		header("Location: /OdontoSystem/view/Tarefa/caixa_entrada.php");
+	}
+
+	public function finalizar($id_tarefa, $status) {
+
+		$this->atualizaStatus($id_tarefa, $status);
+
+		header("Location: /OdontoSystem/view/Tarefa/tarefas_enviadas.php");	
+	}
+
 
 }
 ?>

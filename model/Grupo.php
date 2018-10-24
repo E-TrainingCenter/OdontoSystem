@@ -166,6 +166,17 @@ class Grupo {
       		return false;
    }
 
+   public function editar($id_grupo, $descricao) {
+   		$conn = Banco::connect();
+
+   		$stmt = $conn->prepare("UPDATE Grupo SET descricao = :descricao WHERE id_grupo = :id_grupo");
+   		$stmt->bindParam(":descricao", $descricao);
+   		$stmt->bindParam(":id_grupo", $id_grupo);
+
+   		$stmt->execute();
+
+   }
+
 
 
 }

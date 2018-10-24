@@ -41,6 +41,7 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
 
 		<form method="POST">
 			<div class="form-group">
+
 				
 				<div class ="row"> 
 					Nome: <input type="text" name="nome" class="form-control">
@@ -89,6 +90,7 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
 					<button type="submit" class="btn btn-success">Cadastrar</button> 
 					<button href="/OdontoSystem/view/Administracao/Funcionario/index.php" class="btn btn-default">Voltar</button>
 				</div>
+
 			</div>
 		</form>
 	</div>

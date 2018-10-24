@@ -22,6 +22,14 @@ class CargoController {
         $id_cargo = $cargo->GetId_cargoByDescricao($cargo_descricao);
         return $id_cargo;
      }
+
+     public function GetCargoById($id_cargo) {
+        $cargo = new Cargo();
+
+        $result = $cargo->GetCargoById($id_cargo);
+
+        return $result;
+     }
  
     
     
