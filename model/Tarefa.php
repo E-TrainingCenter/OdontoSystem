@@ -123,9 +123,8 @@ class Tarefa {
 
         $conn = Banco::connect();
 
-        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 1 and id_funcionario_destinatario = :id_funcionario_destinatario");
+        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE status = 'FINALIZADO' and id_funcionario_destinatario = :id_funcionario_destinatario");
         $stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
-
         $stmt->execute();
         
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
