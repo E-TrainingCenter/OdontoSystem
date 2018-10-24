@@ -10,6 +10,7 @@ if (isset($_POST['descricao'])) {
 
 	$grupocontroller->CadastrarGrupo($_POST['descricao']);
 
+	header("Location: /OdontoSystem/view/Administracao/Grupo/index.php");
 }
 
 
@@ -31,7 +32,7 @@ if (isset($_POST['descricao'])) {
 					Nome: <input type="text" class="form-control" name="descricao" required>
 					
 					<button type="submit" class="btn btn-success">Cadastrar</button> <br> <br>
-					<button type="submit" class="btn btn-default"><a  href="/OdontoSystem/view/Administracao/Grupo/index.php" >Voltar</a></button>
+					<a class="btn btn-secondary" href="/OdontoSystem/view/Administracao/Grupo/index.php" role="button">Voltar</a>
 				</div>
 			</form>
 		</div>

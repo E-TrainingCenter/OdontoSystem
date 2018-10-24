@@ -38,6 +38,7 @@ $msgs = $mensagemcontroller->listExcluidos();
                           <th> Destinatário </th>
                           <th> Assunto </th>
                           <th> Data </th>
+                          <th> Excluir </th>
                           </tr>
 
                         <?php 
