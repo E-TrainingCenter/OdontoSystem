@@ -85,7 +85,7 @@ class Tarefa {
     public function listAll($id_funcionario_destinatario) {
         $conn = Banco::connect();
 
-        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 0 and id_funcionario_destinatario = :id_funcionario_destinatario ORDER BY data_fim DESC");
+        $stmt = $conn->prepare("SELECT * FROM Tarefa WHERE excluido = 0 and status != 'FINALIZADO' and id_funcionario_destinatario = :id_funcionario_destinatario ORDER BY data_fim DESC");
         $stmt->bindParam(":id_funcionario_destinatario", $id_funcionario_destinatario);
 
         $stmt->execute();

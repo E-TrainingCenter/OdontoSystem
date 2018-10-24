@@ -70,6 +70,10 @@
 					echo "<button type='submmit' class='btn btn-danger btn-lg botao' name='finalizar' value='finalizar' style = 'width:20vh'>FINALIZAR TAREFA</button>'";
 					echo "<a href='/OdontoSystem/view/Tarefa/tarefas_enviadas.php' style = 'margin-left: 20px;'><h4>Voltar</h4></a>";
 				}
+				else if (isset($_GET['finalizada']) && $_GET['finalizada'] == 'true') {
+					echo "<button type='submmit' disabled class='btn btn-primary btn-lg botao' name='atualizar' value='atualizar' style = 'width:20vh'>Atualizar</button>'";
+					echo "<a href='/OdontoSystem/view/Tarefa/tarefas_excluidas.php' style = 'margin-left: 20px;'><h4>Voltar</h4></a>";
+				}
 				else {
 					echo "<button type='submmit' class='btn btn-primary btn-lg botao' name='atualizar' value='atualizar' style = 'width:20vh'>Atualizar</button>'";
 					echo "<a href='/OdontoSystem/view/Tarefa/caixa_entrada.php' style = 'margin-left: 20px;'><h4>Voltar</h4></a>";

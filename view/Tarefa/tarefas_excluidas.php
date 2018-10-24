@@ -43,9 +43,9 @@ $tarefas = $tarefacontroller->listExcluidos();
 
                             foreach ($tarefas as $key => $value) {
                                 
-                                $nome_remetente = $tarefacontroller->returnNomeById($value['id_funcionario_destinatario']);
+                                $nome_remetente = $tarefacontroller->returnNomeById($value['id_funcionario_remetente']);
                                 $id_tarefa = $value['id_tarefa'];
-                                echo "<tr><td><a href='/OdontoSystem/view/Tarefa/visualizar_tarefa.php?id=$id_tarefa'> ". $nome_remetente . "</a></td> <td> " . $value['assunto'] ." </td></tr>";
+                                echo "<tr><td><a href='/OdontoSystem/view/Tarefa/visualizar_tarefa.php?id=$id_tarefa&finalizada=true'> ". $nome_remetente . "</a></td> <td> " . $value['assunto'] ." </td></tr>";
                                
                             }   
                         ?>
