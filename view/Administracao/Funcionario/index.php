@@ -25,27 +25,29 @@ if (isset($_GET['id_ativar'])) {
 ?>
 
 <body>
-	<div class="container">
+	<div class="container" >
 		<div class="row" >
 			<div class="col-md-offset-3">
 				<h2>Área Administrativa - Funcionários</h2>
 				<hr>
 			</div>
-		</div>
-
-		<div class="row">
-
-			<div class="col-md-2">
-				<a href="/OdontoSystem/view/Administracao/Funcionario/adicionar.php">Adicionar</a>
+			<div style="width: 10vw; margin-left: 10vw;">
+				<a href="/OdontoSystem/view/Administracao/Funcionario/adicionar.php" ><h3>Adicionar</h3></a>	
 			</div>
-			<div class="col-md-4">
-				<a href="/OdontoSystem/view/Administracao/HomeAdministracao.php">Voltar</a>			
+			<div>
+				<a href="/OdontoSystem/view/Administracao/HomeAdministracao.php"><h3>Voltar</h3></a>			
 			</div>
-
 		</div>
-		<div class="row">
-			<div class="panel">
-				<div class="panel-body">
+		<center>
+			<div class="row" style="width: 80vw; padding: 10px; margin-left: 20vw;">
+				
+			</div>
+		</center>
+
+		<div class="row" style=" width: 80vw; margin-left: 10vw; text-align: center;" >
+			<div class="panel" style="width: 30vw; text-align: center; border: solid 10px #ddd; margin-right: 10px;">
+				<div class="panel-body" >
+					<h3>Funcionarios Ativos</h3>
 
 					<table class="table"> 
 						<thead>
@@ -84,54 +86,56 @@ if (isset($_GET['id_ativar'])) {
 				</div>
 
 			</div>
-		</div>
+		
 
 
-<h1>Funcionarios Inativos</h1>
-		<div class="row">
-			<div class="panel">
-				<div class="panel-body">
+		
 
-					<table class="table"> 
-						<thead>
-							<tr>
-								<th>Funcionarios</th>
+					<div class="panel" style="width: 30vw; text-align: center; border: solid 10px #ddd"">
+						<div class="panel-body" style="width: 50%">
+							<h3>Funcionarios Inativos</h3>
 
-								<th>Ativar</th>
+							<table class="table"> 
+								<thead>
+									<tr>
+										<th>Funcionarios</th>
 
-								<th>Editar</th>
-							</tr>
-						</thead>
+										<th>Ativar</th>
 
-						<tbody>
-							
-								<?php
+										<th>Editar</th>
+									</tr>
+								</thead>
 
-									foreach ($funcionarios_inativos as $key => $value) {
-										$id_funcionario = $value['id_funcionario'];
-
-										echo "<tr>";
-										echo "<td>". $value['nome']. "</td>";	
-
-										echo "<td> <a href='/OdontoSystem/view/Administracao/Funcionario/index.php?id_ativar=$id_funcionario'>ativar</a> </td>";
-										echo "<td> <a href='#ativar'>Editar</a> </td>";
-										echo "</tr>";
-									}
+								<tbody>
 									
-								
-				
-								?>
+										<?php
+
+											foreach ($funcionarios_inativos as $key => $value) {
+												$id_funcionario = $value['id_funcionario'];
+
+												echo "<tr>";
+												echo "<td>". $value['nome']. "</td>";	
+
+												echo "<td> <a href='/OdontoSystem/view/Administracao/Funcionario/index.php?id_ativar=$id_funcionario'>ativar</a> </td>";
+												echo "<td> <a href='#ativar'>Editar</a> </td>";
+												echo "</tr>";
+											}
+											
+										
+						
+										?>
+									
+								</tbody>
 							
-						</tbody>
-					
-					</table>
+							</table>
 
-				</div>
+						</div>
 
-			</div>
+					</div>
+				
+
 		</div>
-
-	</div>
+	</div>		
 
 
 

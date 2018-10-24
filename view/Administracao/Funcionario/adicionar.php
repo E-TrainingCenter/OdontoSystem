@@ -41,27 +41,54 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
 
 		<form method="POST">
 			<div class="form-group">
-				Nome: <input type="text" name="nome" class="form-control">
-				Sexo: <br> Masculino <input type="radio" name="sexo" value="Masculino" ><br> Feminino<input type="radio" name="sexo" value="Feminino"><br>
-				CPF: <input type="text" name="cpf" class="form-control">
-				Endereco: <input type="text" name="endereco" class="form-control">
-				Cargo: 
-				<select class="form-control" name="destinatario">	
-					<option>---</option>
-					<?php  
+				
+				<div class ="row"> 
+					Nome: <input type="text" name="nome" class="form-control">
+				</div>
+				<br>
 
-					foreach ($c as $key => $value) {
-							$c = $value['cargo'];
-							echo "<option value=$c> ". $c ." </option>";
-						}	
+				<div class="row">
+					<h5 style="padding: 6px;">Sexo:</h5>
+						  <input type="radio" name="sexo" value="Masculino"> <h5 style="padding: 6px;"> Masculino  </h5>
+						  <input type="radio" name="sexo" value="Feminino">   <h5 style="padding: 6px;">Feminino </h5>
+				</div>
+				<br>
+				
+				<div class="row">
+					CPF: <input type="text" name="cpf" class="form-control">
+				</div>
+				<br>
 
-					?>
+				<div class="row">	
+					Endereco: <input type="text" name="endereco" class="form-control">
+				</div>
+				<br>
+				
+				<div class="row">
+					Cargo: 
+					<select class="form-control" name="destinatario">	
+						<option>---</option>
+						<?php  
 
-				</select>
-				Senha: <input type="password" name="senha" class="form-control"><br>
+						foreach ($c as $key => $value) {
+								$c = $value['cargo'];
+								echo "<option value=$c> ". $c ." </option>";
+							}	
 
-				<button type="submit" class="btn btn-success">Cadastrar</button> <br> <br>
-				<button href="/OdontoSystem/view/Administracao/Funcionario/index.php" class="btn btn-default">Voltar</button>
+						?>
+
+					</select>
+				</div>
+				<br>
+
+				<div class ="row">
+					Senha: <input type="password" name="senha" class="form-control">
+				</div>
+				<br>
+				<div class="row">
+					<button type="submit" class="btn btn-success">Cadastrar</button> 
+					<button href="/OdontoSystem/view/Administracao/Funcionario/index.php" class="btn btn-default">Voltar</button>
+				</div>
 			</div>
 		</form>
 	</div>
