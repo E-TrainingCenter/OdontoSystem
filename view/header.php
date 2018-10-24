@@ -41,11 +41,11 @@ $cargo = $cargocontroller->GetCargoById($funcionario['id_cargo']);
 
     <link href="/OdontoSystem/resources/css/layoutcss.css" rel="stylesheet">
     <div>
-	    <table>
-			<tr style = "width: 100vw;">
-				<td style = "width: 60vw;"> <h3> OdontoSystem </h3></td>
-				<td style = "width: 36vw; text-align: right;"> Bem Vindo, <?php echo  $_SESSION['nome'];?>. </td>
-				<td style = "width: 3vw; text-align: right;">    <a href="/OdontoSystem/view/logout.php" >Sair</a></td>
+	    <table class="cardTitle">
+			<tr >
+				<td > <h1 style ="font-weight: 600; text-shadow: 2px 2px #ddd;"> OdontoSystem </h1></td>
+				<td style = "text-align: right;"> Bem Vindo, <?php echo  $_SESSION['nome'];?>. </td>
+				<td style = "text-align: center;"> <a href="/OdontoSystem/view/logout.php" >Sair</a></td>
 			</tr>	
 		</table>
 
