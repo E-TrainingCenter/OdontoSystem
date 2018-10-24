@@ -34,7 +34,7 @@ if (isset($_GET['id_mensagem_resposta'])) {
 	$msg = $mensagemcontroller->GetMensagemById($_GET['id_mensagem_resposta']);
 
 	$funcionario = $mensagemcontroller->returnNomeById($msg['id_funcionario_remetente']);
-
+	
 	$assunto = $msg['assunto'];
 
 }
@@ -52,20 +52,21 @@ if (isset($_GET['id_mensagem_resposta'])) {
 			<div class="row">
 
 				Para Funcionario: 
-				<select class="form-control" name="destinatario">	
+				<select required class="form-control" name="destinatario">	
 					
-
 					<?php  
-					if (isset($funcionario)) {
-						echo "<option value=$funcionario> ". $funcionario ." </option>";
+					if (isset($_GET['id_mensagem_resposta'])) {
+
+						echo "<option value=$funcionario>$funcionario</option>";
+
 					}
 					else {
-						echo "<option>---</option>";
-						foreach ($funcionarios as $key => $value) {
+					echo "<option>---</option>";
+					foreach ($funcionarios as $key => $value) {
 							$nome = $value['nome'];
 							echo "<option value=$nome> ". $nome ." </option>";
-						}
-					}	
+						}	
+					}
 
 					?>
 
