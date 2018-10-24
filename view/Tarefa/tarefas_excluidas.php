@@ -7,7 +7,6 @@ $tarefacontroller = new TarefaController();
 
 $tarefas = $tarefacontroller->listExcluidos();
 
-
 ?>
 
 <body>
@@ -20,7 +19,7 @@ $tarefas = $tarefacontroller->listExcluidos();
                         <a href="/OdontoSystem/view/Tarefa/nova_tarefa.php" class="btn btn-primary btn-lg botao menuSide">Nova Tarefa</a><br>
                         <a href="/OdontoSystem/view/Tarefa/caixa_entrada.php" class="btn btn-primary btn-lg botao menuSide">Caixa de Entrada</a><br>
                         <a href="/OdontoSystem/view/Tarefa/tarefas_enviadas.php" class="btn btn-primary btn-lg botao menuSide">Tarefas Enviadas</a><br>
-                        <a href="/OdontoSystem/view/Tarefa/tarefas_excluidas.php" class="btn btn-primary btn-lg botao menuSide">Tarefas Excluídas</a>
+                        <a href="/OdontoSystem/view/Tarefa/tarefas_excluidas.php" class="btn btn-primary btn-lg botao menuSide">Tarefas Finalizadas</a>
                     </p>
                 </div>
             </div>    
@@ -30,7 +29,7 @@ $tarefas = $tarefacontroller->listExcluidos();
             <div class="col-lg-8">
                 <div class="panel">
                     <div class="panel-heding title">
-                        Tarefas Excluidas
+                        Tarefas Finalizadas
                     </div>
                     <div class="panel-body">
                         <table style="width:100%">

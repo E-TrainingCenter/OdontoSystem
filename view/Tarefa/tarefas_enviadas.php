@@ -18,7 +18,7 @@ $tarefas = $tarefacontroller->listEnviadas();
                         <a href="/OdontoSystem/view/Tarefa/nova_tarefa.php" class="btn btn-primary btn-lg botao menuSide">Nova Tarefas</a><br>
                         <a href="/OdontoSystem/view/Tarefa/caixa_entrada.php" class="btn btn-primary btn-lg botao menuSide">Caixa de Entrada</a><br>
                         <a href="/OdontoSystem/view/Tarefa/tarefas_enviadas.php" class="btn btn-primary btn-lg botao menuSide">Tarefas Enviadas</a><br>
-                        <a href="/OdontoSystem/view/Tarefa/tarefas_excluidas.php" class="btn btn-primary btn-lg botao menuSide">Tarefas Excluídas</a>
+                        <a href="/OdontoSystem/view/Tarefa/tarefas_excluidas.php" class="btn btn-primary btn-lg botao menuSide">Tarefas Finalizadas</a>
                     </p>
                 </div>
             </div>    
